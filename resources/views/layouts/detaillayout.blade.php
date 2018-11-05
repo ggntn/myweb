@@ -142,7 +142,7 @@
       <!-- Project Two -->
       <div class="row">
         <div class="col-md-7">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/test">Episode</a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/page">Episode</a>
         </div>
 
           <div class="col-md-7">

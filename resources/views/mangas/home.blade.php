@@ -3,9 +3,10 @@
 
 {{--test--}}
 @section('content')
-    <head>
-        <strong>this is home page for manga web</strong>
-    </head>
+
+    <li class="nav-item mx-0 mx-lg-1">
+        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/page">create</a>
+    </li>
 @endsection
 
 {{--test--}}
