@@ -10,4 +10,9 @@ class PageController extends Controller
     {
         return view('mangas.page');
     }
+
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 }

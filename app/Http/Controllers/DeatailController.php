@@ -10,4 +10,8 @@ class DeatailController extends Controller
     {
         return view('mangas.detail');
     }
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
 }
