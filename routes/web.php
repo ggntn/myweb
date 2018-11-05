@@ -44,3 +44,7 @@ Auth::routes();
 Route::get('/manga', 'HomeController@index')->name('home');
 
 Route::get('/detail', 'DeatailController@index');
+
+Route::get('/test', function () {
+return view('mangas.page');
+});
