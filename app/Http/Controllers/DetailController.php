@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class DetailController extends Controller
 {
     public function index()
     {
-        return view('mangas.page');
+        return view('mangas.detail');
     }
-
 
     public function __construct(){
         $this->middleware('auth');

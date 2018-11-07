@@ -7,18 +7,18 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/magnific-popup/magnific-popup.css') }}">
 
     <!-- Custom styles for this template -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/freelancer.min.css') }}">
 
 </head>
 <body>
@@ -37,57 +37,34 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cataegories</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownThemes">
                         <a class="dropdown-item" href="/categories/action">
-                            <i class="fal fa-star fa-fw"></i>
-                        Action </a>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            Action </a>
 
                         <a class="dropdown-item" href="/categories/Adventure">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Adventure </a>
 
                         <a class="dropdown-item" href="/categories/Sci-Fi">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Sci-Fi </a>
 
                         <a class="dropdown-item" href="/categories/Horror">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Horror </a>
 
                         <a class="dropdown-item" href="/categories/Comedy">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Comedy </a>
 
                         <a class="dropdown-item" href="/categories/Romantic">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Romantic </a>
 
                         <a class="dropdown-item" href="/categories/Fantasy">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Fantasy </a>
                     </div>
 
-
-                    {{--<div class="dropdown-menu" aria-labelledby="dropdownThemes">--}}
-                        {{--<a class="dropdown-item" href="/template-categories/all">--}}
-                            {{--<i class="fal fa-browser fa-fw"></i>--}}
-                            {{--All Templates &amp; Themes</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/popular">--}}
-                            {{--<i class="fal fa-star fa-fw"></i>--}}
-                            {{--Most Popular</a>--}}
-                        {{--<a class="dropdown-item" href="/buy-bootstrap-templates">--}}
-                            {{--<i class="fal fa-shopping-basket fa-fw"></i>--}}
-                            {{--Buy Bootstrap Templates</a>--}}
-                        {{--<div class="dropdown-divider"></div>--}}
-                        {{--<h6 class="dropdown-header">Template &amp; Theme Categories:</h6>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/admin-dashboard">Admin and Dashboard</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/full-websites">Full Websites</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/landing-pages">Landing Pages</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/one-page">One Page Websites</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/portfolios">Portfolios</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/blogs">Blogs</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/ecommerce">Ecommerce</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/unstyled">Unstyled Starter Templates</a>--}}
-                        {{--<a class="dropdown-item" href="/template-categories/navigation-menus">Navigation and Navbars</a>--}}
-                    {{--</div>--}}
 
                 </li>
                 <li class="nav-item dropdown">
@@ -102,17 +79,25 @@
 
                 @guest
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/login">Login</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/login') }}">Login</a>
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/register">Register</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('register') }}">Register</a>
                 </li>
 
                 @else
 
 
                     @yield('content')
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/create">create</a>
+                    </li>
+
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/vip">Premeium </a>
+                    </li>
+
                     <li class="nav-item  dropdown">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle"href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
@@ -140,11 +125,6 @@
                     {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}
                 {{--</li>--}}
 
-
-
-
-
-
             </ul>
 
 
@@ -164,27 +144,28 @@
 
 
 <main role="main">
-
+    <div class="container">
     @yield('content2')
-
+    </div>
 </main>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="{{ URL::asset('https://code.jquery.com/jquery-3.1.1.slim.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js') }}"></script>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('vendor/jquery/jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
 <!-- Plugin JavaScript -->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+<script type="text/javascript" src="{{ URL::asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
 
 <!-- Contact Form JavaScript -->
-<script src="js/jqBootstrapValidation.js"></script>
-<script src="js/contact_me.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/jqBootstrapValidation.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/contact_me.js') }}"></script>
 
 <!-- Custom scripts for this template -->
-<script src="js/freelancer.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('js/freelancer.min.js') }}"></script>

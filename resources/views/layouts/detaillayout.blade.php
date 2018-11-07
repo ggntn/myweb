@@ -3,18 +3,19 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/bootstrap/css/bootstrap.min.css') }}">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/fontawesome-free/css/all.min.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('vendor/magnific-popup/magnific-popup.css') }}">
 
     <!-- Custom styles for this template -->
-    <link href="css/freelancer.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/freelancer.min.css') }}">
+
 
 </head>
 <body>
@@ -24,8 +25,6 @@
 
         <a class="navbar-brand js-scroll-trigger" href="/manga">Humble Manga</a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-
-            Menu
             <i class="fas fa-bars"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -35,60 +34,36 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cataegories</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownThemes">
                         <a class="dropdown-item" href="/categories/action">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Action </a>
 
                         <a class="dropdown-item" href="/categories/Adventure">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Adventure </a>
 
                         <a class="dropdown-item" href="/categories/Sci-Fi">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Sci-Fi </a>
 
                         <a class="dropdown-item" href="/categories/Horror">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Horror </a>
 
                         <a class="dropdown-item" href="/categories/Comedy">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Comedy </a>
 
                         <a class="dropdown-item" href="/categories/Romantic">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Romantic </a>
 
                         <a class="dropdown-item" href="/categories/Fantasy">
-                            <i class="fal fa-star fa-fw"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                             Fantasy </a>
                     </div>
 
 
-                    {{--<div class="dropdown-menu" aria-labelledby="dropdownThemes">--}}
-                    {{--<a class="dropdown-item" href="/template-categories/all">--}}
-                    {{--<i class="fal fa-browser fa-fw"></i>--}}
-                    {{--All Templates &amp; Themes</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/popular">--}}
-                    {{--<i class="fal fa-star fa-fw"></i>--}}
-                    {{--Most Popular</a>--}}
-                    {{--<a class="dropdown-item" href="/buy-bootstrap-templates">--}}
-                    {{--<i class="fal fa-shopping-basket fa-fw"></i>--}}
-                    {{--Buy Bootstrap Templates</a>--}}
-                    {{--<div class="dropdown-divider"></div>--}}
-                    {{--<h6 class="dropdown-header">Template &amp; Theme Categories:</h6>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/admin-dashboard">Admin and Dashboard</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/full-websites">Full Websites</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/landing-pages">Landing Pages</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/one-page">One Page Websites</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/portfolios">Portfolios</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/blogs">Blogs</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/ecommerce">Ecommerce</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/unstyled">Unstyled Starter Templates</a>--}}
-                    {{--<a class="dropdown-item" href="/template-categories/navigation-menus">Navigation and Navbars</a>--}}
-                    {{--</div>--}}
-
                 </li>
-
                 <li class="nav-item dropdown">
 
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
@@ -112,6 +87,13 @@
 
 
                     @yield('content')
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/page">create</a>
+                    </li>
+
+                    <li class="nav-item mx-0 mx-lg-1">
+                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/vip">Premeium </a>
+                    </li>
 
                     <li class="nav-item  dropdown">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle"href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -131,7 +113,15 @@
                         </div>
                     </li>
 
+
+
+
                 @endguest
+                {{--<li class="form-inline  mx-0 mx-lg-1">--}}
+                {{--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">--}}
+                {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}
+                {{--</li>--}}
+
             </ul>
 
 
@@ -139,7 +129,6 @@
 
     </div>
 </nav>
-<br/>
 <br/>
 <br/>
 <br/>
@@ -157,7 +146,7 @@
       <!-- Project One -->
         @yield('content2')
 
-
+    </div>
     <!-- Bootstrap core JavaScript -->
     <script src="./1 Col Portfolio - Start Bootstrap Template_files/jquery.min.js.download"></script>
     <script src="./1 Col Portfolio - Start Bootstrap Template_files/bootstrap.bundle.min.js.download"></script>
@@ -185,4 +174,5 @@
 <script src="js/freelancer.min.js"></script>
 
 
-</body></html>
+</body>
+</html>

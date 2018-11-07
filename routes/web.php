@@ -15,34 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-////Route::get('/homeblade', function () {
-////    return view('home');
-////});
-////
-////Route::get('/listblade', function () {
-////    return view('mangalist');
-////});
-////
-////Route::get('/popblade', function () {
-////    return view('pop');
-////});
-////
-////Route::get('/test', function () {
-////    return view('test');
-////});
-//Route::get('/hello', function () {
-//    return 'its me fucking mario';
-//});
-
 /***********************************************
  Home controller get home layouts
  **********************************************/
-Route::get('/home', 'HomeController@home' );
+//Route::get('/home', 'HomeController@home' );
 Auth::routes();
 
 
 Route::get('/manga', 'HomeController@index')->name('home');
 
-Route::get('/detail', 'DeatailController@index');
+Route::get('/detail', 'DetailController@index');
 
-Route::get('/page', 'PageController@index');
+
+
+Route::get('/create', 'MangaController@index');

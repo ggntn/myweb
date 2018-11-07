@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMangatitleTable extends Migration
+class CreateMangaTitleTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,8 +14,7 @@ class CreateMangatitleTable extends Migration
     public function up()
     {
         Schema::create('manga_title', function (Blueprint $table) {
-            $table->unsignedInteger('id_title');
-            $table->char('title_name');
+            $table->increments('id');
             $table->timestamps();
         });
     }

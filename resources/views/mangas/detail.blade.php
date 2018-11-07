@@ -1,6 +1,7 @@
 @extends('layouts.detaillayout')
 
 @section('content2')
+
     <div class="row">
         <div class="col-md-7">
             <a href="https://blackrockdigital.github.io/startbootstrap-1-col-portfolio/#">
