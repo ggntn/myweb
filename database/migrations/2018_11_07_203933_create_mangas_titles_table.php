@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMangaTitleTable extends Migration
+class CreateMangasTitlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateMangaTitleTable extends Migration
      */
     public function up()
     {
-        Schema::create('manga_title', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('mangas_titles', function (Blueprint $table) {
+            $table->increments('title_id')->unsigned();
+            $table->string('title_name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateMangaTitleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manga_title');
+        Schema::dropIfExists('mangas_titles');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMangaChapTable extends Migration
+class CreateAuthorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateMangaChapTable extends Migration
      */
     public function up()
     {
-        Schema::create('manga_chap', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('authors', function (Blueprint $table) {
+            $table->increments('author_id')->unsigned();
+            $table->string('author_name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateMangaChapTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manga_chap');
+        Schema::dropIfExists('authors');
     }
 }
