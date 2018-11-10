@@ -22,10 +22,17 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::get('/manga', 'HomeController@index')->name('home');
+Route::get('/mangas', 'HomeController@index')->name('home');
 
-Route::get('/detail', 'DetailController@index');
+Route::get('/detail/', 'DetailController@index');
 
 
 
-Route::get('/create', 'MangaController@index');
+Route::get('/create', 'MangaController@create');
+
+Route::resource('manga','MangasController');
+
+
+
+Route::resource('detail','DetailssController');
+

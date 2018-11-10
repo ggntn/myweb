@@ -4,18 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Manga extends Model
+class Chap extends Model
 {
     protected $fillable = [
-        'manga_name',
+        'chap_name',
         'image'
     ];
-//    pk key
-    public $primaryKey = 'manga_id';
-//    table
-    protected $table = 'mangas';
+    //Table
+    protected $table = 'chapters';
+    //    pk key
+    public $primaryKey = 'chap_id';
 
     public  $timestamps = true;
-
 
 }

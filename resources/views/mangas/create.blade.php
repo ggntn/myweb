@@ -3,7 +3,20 @@
 @section('content2')
     <br>
     <br>
-    <form action="{{ url('/manga') }}" method="POST">
+
+    {{--{!! Form::open(['action'=>'MangaController@store','method' => 'POST']) !!}--}}
+    {{--<div class="form-group">--}}
+        {{--{!! Form::label('title', 'Title: ') !!}--}}
+        {{--{!! Form::text('title', null, ['class'=>'form-control']) !!}--}}
+    {{--</div>--}}
+    {{--<div class="form-group">--}}
+        {{--{!! Form::label('body', 'Body: ') !!}--}}
+        {{--{!! Form::textarea('body', null,--}}
+        {{--['class'=>'form-control']) !!}--}}
+    {{--</div>--}}
+
+    {!! Form::close() !!}
+    <form action="{{ url('/detail') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group">
             <label>Manga chapter/ Manga: </label>
