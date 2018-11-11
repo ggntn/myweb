@@ -36,20 +36,29 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-7">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{$mangas->manga_name}}/">  a</a>
-        </div>
+
+        @foreach($mangas as $manga)
 
         <div class="col-md-7">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>
+
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">{{$mangas->manga_name}} {{$mangas->chap_id}}</a>
+
         </div>
 
-        <div class="col-md-7">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>
-        </div>
+        @endforeach
+
+    </div>
+
+        {{--<div class="col-md-7">--}}
+            {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>--}}
+        {{--</div>--}}
+
+        {{--<div class="col-md-7">--}}
+            {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>--}}
+        {{--</div>--}}
 
         {{--{{$chapters->chap_name}}--}}
-    </div>
+
     <hr>
     <a href="/manga"  class="btn btn-sm btn-outline-secondary">Back to Home</a>
 @endsection

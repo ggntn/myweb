@@ -1,6 +1,7 @@
 @extends('layouts.homelayout')
 
 @section('content2')
+    <br>
     <h1>Home</h1>
     @include('inc.message')
     {{$mangas->links()}}

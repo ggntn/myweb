@@ -30,6 +30,9 @@ Route::get('/detail/', 'DetailController@index');
 
 Route::get('/create', 'MangaController@create');
 
+Route::get('/chap', 'ChapController@index');
+
+
 Route::resource('manga','MangasController');
 
 
