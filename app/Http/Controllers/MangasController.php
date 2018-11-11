@@ -179,8 +179,8 @@ class MangasController extends Controller
      */
     public function destroy($id)
     {
-//        $mangas =  Manga::find($id);
-//        $mangas->delete();
-//        return redirect('/manga')->with('success', 'Manga delete');
+        $mangas =  Manga::find($id);
+        $mangas->delete();
+        return redirect('/manga')->with('success', 'Manga delete');
     }
 }

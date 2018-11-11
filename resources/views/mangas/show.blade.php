@@ -6,14 +6,14 @@
 
 
     <div class="row">
+
     <h1>{{$mangas->manga_name}}</h1>
+        {!! Form::open(['action' => ['MangasController@destroy',$mangas->manga_id],'method' => 'POST' ]) !!}
         <a href="/manga/{{$mangas->manga_id}}/edit"  class="btn btn-sm btn-primary ">Edit</a>
+        {{Form::hidden('_method','DELETE')}}
+        {{Form::submit('Delete',['class' => 'btn btn-sm btn-danger'])}}
 
-    {{--{!! Form::open(['action' => ['MangasController@destroy',$mangas->id],'method' => 'POST' ]) !!}--}}
-        {{--{{Form::hidden('_method','DELETE')}}--}}
-        {{--{{Form::submit('Delete',['class' => 'btn btn-sm btn-danger'])}}--}}
-    {{--{!! Form::close() !!}--}}
-
+        {!! Form::close() !!}
     <br>
     </div>
     <div class="row">
