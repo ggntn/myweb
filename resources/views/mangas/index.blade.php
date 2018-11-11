@@ -2,6 +2,7 @@
 
 @section('content2')
     <h1>Home</h1>
+    @include('inc.message')
     {{$mangas->links()}}
     <div class="album py-5 bg-light">
         <div class="container">
@@ -17,8 +18,8 @@
                                     <p class="card-text"> {{$manga->manga_name}} </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="/manga/{{$manga->manga_name}}"{{$manga->manga_id}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
-                                            <a href="/edit/" class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Edit</a>
+                                            <a href="/manga/{{$manga->manga_id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
+                                            {{--<a href="/edit/{{$manga->manga_id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Edit</a>--}}
                                         </div>
                                         <small class="text-muted"></small>
                                     </div>

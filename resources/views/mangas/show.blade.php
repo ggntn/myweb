@@ -2,8 +2,20 @@
 
 @section('content2')
     <br>
-    <h1>{{$mangas->manga_name}}</h1>
 
+
+
+    <div class="row">
+    <h1>{{$mangas->manga_name}}</h1>
+        <a href="/manga/{{$mangas->manga_id}}/edit"  class="btn btn-sm btn-primary ">Edit</a>
+
+    {{--{!! Form::open(['action' => ['MangasController@destroy',$mangas->id],'method' => 'POST' ]) !!}--}}
+        {{--{{Form::hidden('_method','DELETE')}}--}}
+        {{--{{Form::submit('Delete',['class' => 'btn btn-sm btn-danger'])}}--}}
+    {{--{!! Form::close() !!}--}}
+
+    <br>
+    </div>
     <div class="row">
         <div class="col-md-7">
             <a href="https://blackrockdigital.github.io/startbootstrap-1-col-portfolio/#">
@@ -14,13 +26,18 @@
             <h2>Synoposis</h2>
              <small></small>{{$details->detail_manga}}
 
+            <hr>
+
+            <h2>Category</h2>
+            <small></small>{{$categories->category_name}}
         </div>
+
     </div>
     <hr>
 
     <div class="row">
         <div class="col-md-7">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="manga/{{$mangas->manga_name}}/{{$chapters->chap_name}}"> {{$chapters->chap_name}} </a>
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{$mangas->manga_name}}/">  a</a>
         </div>
 
         <div class="col-md-7">
@@ -31,5 +48,8 @@
             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>
         </div>
 
-
+        {{--{{$chapters->chap_name}}--}}
+    </div>
+    <hr>
+    <a href="/manga"  class="btn btn-sm btn-outline-secondary">Back to Home</a>
 @endsection

@@ -18,4 +18,6 @@ class Manga extends Model
     public  $timestamps = true;
 
 
+
+
 }

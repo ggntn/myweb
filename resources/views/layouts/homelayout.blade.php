@@ -90,9 +90,17 @@
 
 
                     @yield('content')
-                    <li class="nav-item mx-0 mx-lg-1">
-                        <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/create">create</a>
-                    </li>
+
+
+                    <li class="nav-item dropdown">
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownThemes">
+                                    <a class="dropdown-item" href="/create">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        create Manga </a>
+                                </div>
+                     </li>
+
 
                     <li class="nav-item mx-0 mx-lg-1">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/vip">Premeium </a>

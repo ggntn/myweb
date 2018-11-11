@@ -11,5 +11,10 @@ class Title extends Model
 
     ];
 
+    //    pk key
+    public $primaryKey = 'title_id';
+//    table
     protected $table = 'titles';
+
+    public  $timestamps = true;
 }
