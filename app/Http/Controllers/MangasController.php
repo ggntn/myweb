@@ -20,8 +20,12 @@ class MangasController extends Controller
     {
 //        $mangas= Manga::all();
 //        $mangas= Manga::orderBy('manga_name','asc')->get();
+        $categories= Category::all();
         $mangas= Manga::orderBy('manga_name','desc')->paginate(10);
-       return view('mangas.index' )->with('mangas',$mangas);
+
+       return view('mangas.index' )->with('mangas',$mangas)
+                                     ->with('categories',$categories);
+
     }
 
     /**
@@ -31,6 +35,7 @@ class MangasController extends Controller
      */
     public function create()
     {
+//        $categories= Category::all();
         return view('mangas.create');
     }
 
@@ -100,6 +105,20 @@ class MangasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+//    public function showcategory($id)
+//    {
+//        // wait to fix chap
+////        return Manga::find($id);
+//
+//
+//        $categories = Category::findorfail($id);
+//
+////          $chapters = Chap::findorfail($id);
+//        return view('mangas.show' )->with('categories',$categories);
+////
+//
+//    }
+
     public function show($id)
     {
         // wait to fix chap
@@ -107,12 +126,14 @@ class MangasController extends Controller
           $mangas = Manga::findorfail($id);
           $details = Detail::findorfail($id);
         $categories = Category::findorfail($id);
+        $chapters = Chap::all();
+//        $categories = Category::findorfail($id);
 
 
 
 //          $chapters = Chap::findorfail($id);
         return view('mangas.show' )->with('mangas',$mangas)
-//                                        ->with('chapters',$chapters)
+                                        ->with('chapters',$chapters)
                                         ->with('categories',$categories)
                                         ->with('details',$details);
 

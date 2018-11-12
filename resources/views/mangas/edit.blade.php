@@ -1,5 +1,7 @@
 @extends('layouts.homelayout')
 
+
+
 @section('content2')
     <br>
     <br>

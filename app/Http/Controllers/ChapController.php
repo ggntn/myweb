@@ -10,6 +10,7 @@ class ChapController extends Controller
 {
     public function index()
     {
+
         $mangas = Manga::all();
         $chapters = Chap::all();
 

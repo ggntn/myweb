@@ -23,6 +23,7 @@
 </head>
 <body>
 
+
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav"  >
     <div class="container" >
 
@@ -36,33 +37,34 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cataegories</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownThemes">
+                        {{--@yield('category')--}}
                         <a class="dropdown-item" href="/categories/action">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             Action </a>
 
-                        <a class="dropdown-item" href="/categories/Adventure">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            Adventure </a>
+                        <a class="dropdown-item" href="/categories/adventure">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        ssadsada </a>
 
-                        <a class="dropdown-item" href="/categories/Sci-Fi">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            Sci-Fi </a>
+                        <a class="dropdown-item" href="/categories/sci-fi">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        Sci-Fi </a>
 
-                        <a class="dropdown-item" href="/categories/Horror">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            Horror </a>
+                        <a class="dropdown-item" href="/categories/horror">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        Horror </a>
 
-                        <a class="dropdown-item" href="/categories/Comedy">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            Comedy </a>
+                        <a class="dropdown-item" href="/categories/comady">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        Comady </a>
 
-                        <a class="dropdown-item" href="/categories/Romantic">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            Romantic </a>
+                        <a class="dropdown-item" href="/categories/romantic">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        Romantic </a>
 
-                        <a class="dropdown-item" href="/categories/Fantasy">
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                            Fantasy </a>
+                        <a class="dropdown-item" href="/categories/fantasy">
+                        <i class="fa fa-star" aria-hidden="true"></i>
+                        Fantasy </a>
                     </div>
 
 

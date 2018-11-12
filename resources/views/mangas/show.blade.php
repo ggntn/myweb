@@ -1,5 +1,6 @@
 @extends('layouts.homelayout')
 
+
 @section('content2')
     <br>
 
@@ -18,8 +19,7 @@
     </div>
     <div class="row">
         <div class="col-md-7">
-            <a href="https://blackrockdigital.github.io/startbootstrap-1-col-portfolio/#">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="https://i.pinimg.com/originals/a9/bd/21/a9bd214803684dc18fb5b257e0ee695d.jpg" alt="">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{{$details->image}}" alt="">
             </a>
         </div>
         <div class="col-md-5">
@@ -38,16 +38,33 @@
     <div class="row">
 
         @foreach($mangas as $manga)
+            @if(($mangas->manga_id) == 1)
 
-        <div class="col-md-7">
-
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">{{$mangas->manga_name}} {{$mangas->chap_id}}</a>
-
-        </div>
-
+                <div class="col-md-7">
+                    {{--{{$mangas->manga_name}}--}}
+                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">{{$mangas->manga_name}} {{$mangas->chap_id}}</a>
+                    {{--<b>{{$mangas->manga_name}}</b>--}}
+                </div>
+            @endif
         @endforeach
 
-    </div>
+    {{--</div>--}}
+
+{{--    {{-test--}}--}}
+    {{--<div class="row">--}}
+        {{--{{$chapters}}--}}
+        {{--@foreach($mangas as $manga)--}}
+            {{--@if(($mangas->manga_id) == 1)--}}
+
+            {{--<div class="col-md-7">--}}
+                {{--{{$mangas->manga_name}}--}}
+                {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">{{$mangas->manga_name}} {{$mangas->chap_id}}</a>--}}
+                {{--<b>{{$mangas->manga_name}}</b>--}}
+            {{--</div>--}}
+            {{--@endif--}}
+        {{--@endforeach--}}
+
+    {{--</div>--}}
 
         {{--<div class="col-md-7">--}}
             {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>--}}
