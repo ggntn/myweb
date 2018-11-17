@@ -8,6 +8,7 @@ class Manga extends Model
 {
     protected $fillable = [
         'manga_name',
+        'detail',
         'image'
     ];
 //    pk key

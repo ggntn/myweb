@@ -13,12 +13,14 @@ class CreateChaptersTable extends Migration
      */
     public function up()
     {
-        Schema::create('chapters', function (Blueprint $table) {
-            $table->increments('chap_id')->unsigned();
-            $table->string('chap_name');
-            $table->string('image')->nullable();
-            $table->timestamps();
-        });
+
+            Schema::create('chapters', function (Blueprint $table) {
+                $table->integer('chap_id')->unsigned();
+                $table->string('chap_name');
+                $table->string('image')->nullable();
+                $table->timestamps();
+            });
+
     }
 
     /**
@@ -29,5 +31,7 @@ class CreateChaptersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('chapters');
+
+
     }
 }

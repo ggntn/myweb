@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDetailsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('details', function (Blueprint $table) {
-            $table->increments('detail_id')->unsigned();
-            $table->text('detail_manga');
-            $table->string('image')->nullable();
+        Schema::create('categories', function (Blueprint $table) {
+            $table->increments('category_id')->unsigned();
+            $table->string('category_name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('details');
+        Schema::dropIfExists('categories');
     }
 }

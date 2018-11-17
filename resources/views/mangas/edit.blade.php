@@ -7,7 +7,7 @@
     <br>
     <h2>Edit Manga</h2>
     @include('inc.message')
-    {!! Form::open(['action' => ['MangasController@update',$mangas->manga_id],'method' => 'POST']) !!}
+    {!! Form::open(['action' => ['MangasController@update',$mangas->manga_id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
     <div class="form-group">
         {!! Form::label('manga_name', 'Manga name: ') !!}
         {!! Form::text('manga_name',$mangas->manga_name, ['class'=>'form-control']) !!}
@@ -16,18 +16,7 @@
         {!! Form::label('category', 'Category id: ') !!}
         {!! Form::text('category_id',$mangas->category_id, ['class'=>'form-control']) !!}
     </div>
-    {{--<div class="form-group">--}}
-    {{--{!! Form::label('category', 'Category name: ') !!}--}}
-    {{--{!! Form::text('category', null, ['class'=>'form-control']) !!}--}}
-    {{--</div>--}}
-    <div class="form-group">
-        {!! Form::label('title', 'Title A-Z id: ') !!}
-        {!! Form::text('title_id',$mangas->title_id, ['class'=>'form-control']) !!}
-        {{--<div class="form-group">--}}
-        {{--{!! Form::label('title', 'Title A-Z : ') !!}--}}
-        {{--{!! Form::text('title', null, ['class'=>'form-control']) !!}--}}
-        {{--</div>--}}
-    </div>
+
     <div class="form-group">
         {!! Form::label('author', 'Author id: ') !!}
         {!! Form::text('author_id',$mangas->author_id, ['class'=>'form-control']) !!}
@@ -37,23 +26,20 @@
     {{--{!! Form::text('author', null, ['class'=>'form-control']) !!}--}}
     {{--</div>--}}
     <div class="form-group">
-        {!! Form::label('detail', 'Detail id: ') !!}
-        {!! Form::text('detail_id',$mangas->detail_id, ['class'=>'form-control']) !!}
-    </div>
-    {{--<div class="form-group">--}}
-    {{--{!! Form::label('detail', 'Detail : ') !!}--}}
-    {{--{!! Form::text('detail', null, ['class'=>'form-control']) !!}--}}
-    {{--</div>--}}
-    <div class="form-group">
         {!! Form::label('chap', 'Chapter id: ') !!}
         {!! Form::text('chap_id', $mangas->chap_id, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
+        {!! Form::label('detail', 'Detail: ') !!}
+        {!! Form::textarea('detail', $mangas->detail,['class'=>'form-control']) !!}
+    </div>
+    <div class="form-group">
         {!! Form::label('image', 'Image: ') !!}
-        {!! Form::textarea('image',$mangas->image,
+        {!! Form::file('image', null,
         ['class'=>'form-control']) !!}
     </div>
     {{Form::hidden('_method','PUT')}}
+    {{Form::hidden('old_image',$mangas->image)}}
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
 
     {!! Form::close() !!}

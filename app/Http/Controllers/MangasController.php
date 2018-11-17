@@ -5,9 +5,10 @@ use App\Author;
 use App\Category;
 use App\Chap;
 use App\Manga;
-use App\Detail;
-use App\Title;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class MangasController extends Controller
 {
@@ -35,9 +36,15 @@ class MangasController extends Controller
      */
     public function create()
     {
-//        $categories= Category::all();
+
         return view('mangas.create');
     }
+//
+//    public function create_chap()
+//    {
+////        $categories= Category::all();
+//        return view('mangas.create_chap');
+//    }
 
     /**
      * Store a newly created resource in storage.
@@ -49,21 +56,37 @@ class MangasController extends Controller
     {
       $this->validate($request, [
          'manga_name'=>'required',
-          'title_id'=>'required',
           'author_id'=>'required',
-          'detail_id'=>'required',
+          'detail'=>'required',
           'chap_id'=>'required',
-          'image'=>'required',
+          'image'=>'image|nullable|max:1999',
           'category_id'=>'required'
       ]);
+      //file upload
+        if($request->hasFile('image')){
+            //get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            //get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $extension =$request->file('image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNametoStore=$filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('image')->storeAs('public/images',$fileNametoStore);
+
+        }else{
+            $fileNametoStore = 'noimage.jpg';
+        }
+
       //create manga
       $mangas = new Manga;
+
       $mangas->manga_name = $request->input('manga_name');
-      $mangas->title_id = $request->input('title_id');
+      $mangas->detail = $request->input('detail');
       $mangas->author_id = $request->input('author_id');
-      $mangas->detail_id = $request->input('detail_id');
       $mangas->chap_id = $request->input('chap_id');
-      $mangas->image = $request->input('image');
+      $mangas->image = $fileNametoStore;
       $mangas->category_id = $request->input('category_id');
 
       $mangas->save();
@@ -99,34 +122,44 @@ class MangasController extends Controller
 
     }
 
+
+//    public function store_chaps(Request $request)
+//    {
+//        $this->validate($request, [
+//
+//            'chap_id'=>'required',
+//            'chap_name'=>'required',
+//            'image'=>'required',
+//
+//        ]);
+//        //create Chap
+//        $chapters = new Chap;
+//
+//        $chapters->chap_id = $request->input('chap_id');
+//        $chapters->chap_name = $request->input('chap_name');
+//        $chapters->image = $request->input('image');
+//
+//
+//        $chapters->save();
+//
+//        return redirect('/manga')->with('success', 'Chap create');
+//
+//    }
+
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-//    public function showcategory($id)
-//    {
-//        // wait to fix chap
-////        return Manga::find($id);
-//
-//
-//        $categories = Category::findorfail($id);
-//
-////          $chapters = Chap::findorfail($id);
-//        return view('mangas.show' )->with('categories',$categories);
-////
-//
-//    }
 
     public function show($id)
     {
         // wait to fix chap
 //        return Manga::find($id);
           $mangas = Manga::findorfail($id);
-          $details = Detail::findorfail($id);
-        $categories = Category::findorfail($id);
-        $chapters = Chap::all();
+          $categories = Category::all();
+        $chapters= Chap::orderBy('chap_name','desc')->paginate(10);
 //        $categories = Category::findorfail($id);
 
 
@@ -135,7 +168,7 @@ class MangasController extends Controller
         return view('mangas.show' )->with('mangas',$mangas)
                                         ->with('chapters',$chapters)
                                         ->with('categories',$categories)
-                                        ->with('details',$details);
+                                        ;
 
     }
 
@@ -148,16 +181,14 @@ class MangasController extends Controller
     public function edit($id)
     {
         $mangas = Manga::findorfail($id);
-        $details = Detail::findorfail($id);
-        $categories = Category::findorfail($id);
-
+//        $categories = Category::findorfail($id);
 
 
 //          $chapters = Chap::findorfail($id);
-        return view('mangas.edit' )->with('mangas',$mangas)
+        return view('mangas.edit' )->with('mangas',$mangas);
 //                                        ->with('chapters',$chapters)
-            ->with('categories',$categories)
-            ->with('details',$details);
+//                                        ->with('categories',$categories)
+
     }
 
     /**
@@ -171,23 +202,39 @@ class MangasController extends Controller
     {
         $this->validate($request, [
             'manga_name'=>'required',
-            'title_id'=>'required',
             'author_id'=>'required',
-            'detail_id'=>'required',
+            'detail'=>'required',
             'chap_id'=>'required',
-            'image'=>'required',
+            'image'=>'image|nullable|max:1999',
             'category_id'=>'required'
         ]);
+
+        if($request->hasFile('image')){
+            if($request->input('old_image')!='noimage.jpg'){
+                Storage::delete('public/images/'.$request->old_image);
+            }
+            //get filename with the extension
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            //get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            //get just ext
+            $extension =$request->file('image')->getClientOriginalExtension();
+            //Filename to store
+            $fileNametoStore=$filename.'_'.time().'.'.$extension;
+            //upload image
+            $path = $request->file('image')->storeAs('public/images',$fileNametoStore);
+
+        }
         //edit manga
         $mangas =  Manga::find($id);
         $mangas->manga_name = $request->input('manga_name');
-        $mangas->title_id = $request->input('title_id');
         $mangas->author_id = $request->input('author_id');
-        $mangas->detail_id = $request->input('detail_id');
         $mangas->chap_id = $request->input('chap_id');
-        $mangas->image = $request->input('image');
+        if($request->has('image')){
+            $mangas->image = $fileNametoStore;
+        }
         $mangas->category_id = $request->input('category_id');
-
+        $mangas->detail = $request->input('detail');
         $mangas->save();
         return redirect('/manga')->with('success', 'Manga update');
     }
@@ -200,8 +247,57 @@ class MangasController extends Controller
      */
     public function destroy($id)
     {
+
         $mangas =  Manga::find($id);
+
+        if($mangas->image!= 'noimage.jpg' ){
+            //delete
+            Storage::delete('public/images/'.$mangas->image);
+        }
+
         $mangas->delete();
         return redirect('/manga')->with('success', 'Manga delete');
     }
+
+//    public function editchap($id)
+//    {
+//        $mangas = Manga::findorfail($id);
+//        $chapters = Chap::findorfail($id);
+//
+//        return view('mangas.edit_chap' )->with('mangas',$mangas)
+//            ->with('chapters',$chapters);
+//
+//    }
+//    public function updatechap(Request $request, $id)
+//    {
+//        $this->validate($request, [
+//
+//            'chap_id'=>'required',
+//            'chap_name'=>'required',
+//            'image'=>'required',
+//
+//        ]);
+//        //create Chap
+//        $chapters =  Chap::findorFail($id);
+//
+//        $chapters->chap_id = $request->input('chap_id');
+//        $chapters->chap_name = $request->input('chap_name');
+//        $chapters->image = $request->input('image');
+//
+//
+//        $chapters->save();
+//
+//        return redirect('/manga')->with('success', 'Chap edit');
+//    }
+
+//    public function upload(Request $request)
+//    {
+//        $files= $request->file('file');
+//        if(!empty($files)):
+//            foreach ($files as $file):
+//                Storage::put($file->getClientOriginalName(),file_get_contents($file));
+//            endforeach;
+//         endif;
+//
+//    }
 }

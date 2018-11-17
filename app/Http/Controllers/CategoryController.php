@@ -15,8 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('mangas.category' )->with('categories',$categories);
+      //
     }
 
     /**

@@ -38,44 +38,44 @@
                     <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cataegories</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownThemes">
                         {{--@yield('category')--}}
-                        <a class="dropdown-item" href="/categories/action">
+                        <a class="dropdown-item" href="/categories/Action">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             Action </a>
 
-                        <a class="dropdown-item" href="/categories/adventure">
+                        <a class="dropdown-item" href="/categories/Adventure">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        ssadsada </a>
+                        Adventure </a>
 
-                        <a class="dropdown-item" href="/categories/sci-fi">
+                        <a class="dropdown-item" href="/categories/Sci-Fi">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Sci-Fi </a>
 
-                        <a class="dropdown-item" href="/categories/horror">
+                        <a class="dropdown-item" href="/categories/Horror">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Horror </a>
 
-                        <a class="dropdown-item" href="/categories/comady">
+                        <a class="dropdown-item" href="/categories/Comady">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Comady </a>
 
-                        <a class="dropdown-item" href="/categories/romantic">
+                        <a class="dropdown-item" href="/categories/Romantic">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Romantic </a>
 
-                        <a class="dropdown-item" href="/categories/fantasy">
+                        <a class="dropdown-item" href="/categories/Fantasy">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Fantasy </a>
                     </div>
 
 
                 </li>
-                <li class="nav-item dropdown">
+                {{--<li class="nav-item dropdown">--}}
 
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownThemes">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Manga/Author">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </div>
+                    {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>--}}
+                    {{--<div class="dropdown-menu" aria-labelledby="dropdownThemes">--}}
+                        {{--<input class="form-control mr-sm-2" type="text" placeholder="Manga/Author" aria-label="">--}}
+                        {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}
+                    {{--</div>--}}
 
 
 
@@ -99,7 +99,11 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownThemes">
                                     <a class="dropdown-item" href="/create">
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        create Manga </a>
+                                        Create Manga </a>
+
+                                    <a class="dropdown-item" href="/create_chap">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        Create Chapter Manga </a>
                                 </div>
                      </li>
 
