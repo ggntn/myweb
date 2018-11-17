@@ -24,6 +24,7 @@ class MangasController extends Controller
         $categories= Category::all();
         $mangas= Manga::orderBy('manga_name','desc')->paginate(10);
 
+
        return view('mangas.index' )->with('mangas',$mangas)
                                      ->with('categories',$categories);
 
@@ -300,4 +301,8 @@ class MangasController extends Controller
 //         endif;
 //
 //    }
+    public function __construct(){
+        $this->middleware('auth',['except'=>
+                                                ['index']]);
+    }
 }

@@ -65,17 +65,57 @@
                         <a class="dropdown-item" href="/categories/Fantasy">
                         <i class="fa fa-star" aria-hidden="true"></i>
                         Fantasy </a>
+
+
                     </div>
-
-
                 </li>
-                {{--<li class="nav-item dropdown">--}}
 
-                    {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Search</a>--}}
-                    {{--<div class="dropdown-menu" aria-labelledby="dropdownThemes">--}}
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Search</a>
+                    {{--<div class="dropdown-menu" >--}}
                         {{--<input class="form-control mr-sm-2" type="text" placeholder="Manga/Author" aria-label="">--}}
                         {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}
+                        {{--<form action="/search" method="POST" role="search" class="px-4 py-3">--}}
+                            {{--<div class="from-group">--}}
+                            {{--{{ csrf_field() }}--}}
+                            {{--<div class="input-group">--}}
+                                {{--<input type="text" class="form-control" name="q"--}}
+                                       {{--placeholder="Search Manga">--}}
+                                {{--<span class="input-group-btn">--}}
+                                {{--<button type="submit" class="btn btn-default">--}}
+                                        {{--<span class="glyphicon glyphicon-search"></span>--}}
+                                 {{--</button>--}}
+                                 {{--</span>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+
                     {{--</div>--}}
+                    <div class="dropdown-menu">
+                        <form class="px-4 py-3">
+                            <div class="form-group">
+                                <form action="/search" method="POST" role="search" class="px-4 py-3">
+                                <div class="from-group">
+                                {{ csrf_field() }}
+                                <div class="input-group">
+                                <input type="text" class="form-control" name="q"
+                                placeholder="Search Manga">
+                                <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                                </span>
+                                </div>
+                                </div>
+                                </form>
+                             </div>
+                        </form>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"  href="{{ route('register') }}">New around here? Sign up</a>
+                        <p class="dropdown-item" >It's me mario!!</p>
+                    </div>
+                </li>
 
 
 
