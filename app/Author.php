@@ -16,4 +16,9 @@ class Author extends Model
     protected $table = 'authors';
 
     public  $timestamps = true;
+
+    public function author_to_mangas(){
+        return $this->hasMany('App\Manga');
+
+    }
 }

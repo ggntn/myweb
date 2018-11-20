@@ -15,6 +15,7 @@ class CreateChaptersTable extends Migration
     {
 
             Schema::create('chapters', function (Blueprint $table) {
+                $table->increments('manga_chap_id')->unsigned();
                 $table->integer('chap_id')->unsigned();
                 $table->string('chap_name');
                 $table->string('image')->nullable();

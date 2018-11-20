@@ -19,7 +19,15 @@ class Manga extends Model
 
     public  $timestamps = true;
 
-
+    public function chaps(){
+        return $this->hasMany('App\Chap');
+    }
+    public function category(){
+        return $this->belongsTo('App\Role');
+    }
+    public function author(){
+        return $this->belongsTo('App\Author');
+    }
 
 
 }

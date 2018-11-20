@@ -12,10 +12,14 @@ class AuthorsTableSeeder extends Seeder
     public function run()
     {
         DB::table('authors')->insert([
-            ['author_name' => 'aaaaa'],
-            ['author_name' => 'bbbbb'],
-            ['author_name' => 'ccccc'],
-            ['author_name' => 'ddddd'],
+            ['author_name' => 'Toriyama'],
+            ['author_name' => 'Akira'],
+            ['author_name' => 'JK Rowling'],
+            ['author_name' => 'Akiyama'],
+            ['author_name' => 'Tsunade'],
+            ['author_name' => 'Sasuke'],
+            ['author_name' => 'Naruto'],
+            ['author_name' => 'Buroto'],
         ]);
     }
 }
