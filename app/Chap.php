@@ -13,7 +13,7 @@ class Chap extends Model
     //Table
     protected $table = 'chapters';
     //    pk key
-    public $primaryKey = 'chap_id';
+    public $primaryKey = 'manga_chap_id';
 
     public  $timestamps = true;
 

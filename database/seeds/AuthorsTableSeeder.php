@@ -16,6 +16,11 @@ class AuthorsTableSeeder extends Seeder
             ['author_name' => 'bbbbb'],
             ['author_name' => 'ccccc'],
             ['author_name' => 'ddddd'],
+            ['author_name' => 'fffff'],
+            ['author_name' => 'ggggg'],
+            ['author_name' => 'eeeee'],
+            ['author_name' => 'hhhhh'],
+            ['author_name' => 'iiiii'],
         ]);
     }
 }

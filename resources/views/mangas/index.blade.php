@@ -1,6 +1,7 @@
 @extends('layouts.homelayout')
 
 @section('content2')
+
     <br>
     {{--<h1>Home</h1>--}}
     @include('inc.message')
@@ -43,6 +44,7 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
+
     @if(count($mangas)>0)
 
         @foreach($mangas as $manga)

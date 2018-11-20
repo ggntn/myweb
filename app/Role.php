@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Sluggable;
 
 class Role extends Model
 {
@@ -10,4 +11,15 @@ class Role extends Model
         'role_name',
         'slug'
     ];
+
+    public $primaryKey = 'role_id';
+
+    public function users()
+    {
+        return $this->hasMany('App\User');
+    }
+
+
+
+
 }

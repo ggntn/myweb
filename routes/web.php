@@ -16,9 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/t', function () {
-    return view('mangas.test');
-});
+//Route::get('/vip', function () {
+//    return view('mangas.vip');
+//});
+//test search
+//Route::get('/t', function () {
+//    return view('mangas.search');
+//});
 
 /***********************************************
  Home controller get home layouts
@@ -27,10 +31,24 @@ Route::get('/t', function () {
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
-
+Route::get('/vip', 'VipController@Index');
 
 Route::get('/create', 'MangasController@create');
 Route::get('/create_chap', 'ChapsController@create');
+
+Route::any('/search',function(){
+    $q = Input::get ( 'q' );
+    if($q != ""){
+        $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();
+        if(count($mangas) > 0)
+            return view('mangas.search')->withDetails($mangas)->withQuery ( $q );
+    }
+    return view('mangas.search')->withMessage("not found");
+//    $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();  //orWhere('email','LIKE','%'.$q.'%')->get();
+//    if(count($mangas) > 0)
+//        return view('mangas.test')->withDetails($mangas)->withQuery ( $q );
+//    else return view ('mangas.test')->withMessage('No Details found. Try to search again !');
+});
 
 
 //Route::get('/chap', 'ChapsController@index');
@@ -43,20 +61,8 @@ Route::get('/chap/{value}','ChapsController@pass_value');
 
 Route::resource('manga','MangasController');
 Route::resource('chap','ChapsController');
+Route::resource('vip','VipController');
 
-Route::any('/search',function(){
-    $q = Input::get ( 'q' );
-    if($q != ""){
-        $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();
-        if(count($mangas) > 0)
-            return view('mangas.test')->withDetails($mangas)->withQuery ( $q );
-    }
-    return view('mangas.test')->withMessage("not found");
-//    $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();  //orWhere('email','LIKE','%'.$q.'%')->get();
-//    if(count($mangas) > 0)
-//        return view('mangas.test')->withDetails($mangas)->withQuery ( $q );
-//    else return view ('mangas.test')->withMessage('No Details found. Try to search again !');
-});
 
 //Route::resource('categories','CategoryController');
 //Route::resource('detail','DetailssController');

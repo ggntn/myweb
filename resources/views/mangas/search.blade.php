@@ -14,8 +14,11 @@
         </div>
     </form>
     @if(isset($details))
-        <h1>search <b>{{$query}}</b> are :</h1>
+        <h1>Search for <b>{{$query}}</b> are :</h1>
         <tbody>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
         @foreach($details as $mangas)
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
@@ -34,9 +37,13 @@
                 </div>
             </div>
          @endforeach
+                </div>
+            </div>
+        </div>
         </tbody>
         @else
             <h1> not found</h1>
 
     @endif
+
     @endsection

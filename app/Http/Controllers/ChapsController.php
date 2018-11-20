@@ -29,6 +29,11 @@ class ChapsController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->role_id != 1){
+            return redirect('/manga')->with('error','Unauthorized Page');
+
+        }
+
         return view('mangas.create_chap');
     }
 
@@ -40,13 +45,18 @@ class ChapsController extends Controller
      */
     public function store(Request $request)
     {
+        if(auth()->user()->role_id != 1){
+            return redirect('/manga')->with('error','Unauthorized Page');
+
+        }
+
         $this->validate($request, [
 
 //
             'chap_id'=>'required',
             'chap_name'=>'required',
             'image'=>'required',
-            'image.*'=>'mimes:png,jpg,jpeg',
+//            'image.*'=>'mimes:png,jpg,jpeg|max:99999',
 
         ]);
         if($request->hasFile('image')){
@@ -152,17 +162,34 @@ class ChapsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($name)
     {
-        $chapters =  Chap::find($id);
+        if(auth()->user()->role_id != 1){
+            return redirect('/manga')->with('error','Unauthorized Page');
 
-        if($chapters->image!= 'noimage.jpg' ){
-            //delete
-            Storage::delete('public/imageschap/'.$chapters->image);
         }
 
-        $chapters->delete();
-        return redirect('/manga')->with('success', 'Chapter delete');
+        $chapters =  Chap::findorfail($name);
+        if($chapters->chap_name == $name){
+            if($chapters->image!= 'noimage.jpg' ){
+                //delete
+                Storage::delete('public/imageschap/'.$chapters->image);
+
+            }
+            $chapters->delete();
+            return redirect('/manga')->with('success', 'Chapter delete');
+        }
+        else{
+            return redirect('/manga')->with('fail', 'Chapter cant delete');
+        }
+//        if($chapters->image!= 'noimage.jpg' ){
+//            //delete
+//            Storage::delete('public/imageschap/'.$chapters->image);
+//        }
+//
+//        $chapters->delete();
+
+//        return redirect('/manga')->with('success', 'Chapter delete');
     }
     public function pass_value($value)
     {
@@ -176,5 +203,9 @@ class ChapsController extends Controller
                                             ->with('mangas',$mangas);
 
 //
+    }
+    public function __construct(){
+        $this->middleware('auth',['except'=>
+            ['index']]);
     }
 }
