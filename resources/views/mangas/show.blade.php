@@ -9,6 +9,7 @@
     <div class="row">
 
     <h1>{{$mangas->manga_name}}</h1>
+        @can('create/edit/delete-mangas/chap', Auth::user())
         {!! Form::open(['action' => ['MangasController@destroy',$mangas->manga_id],'method' => 'POST' ]) !!}
         <a href="/create_chap"  class="btn btn-sm btn-success ">Create Chapter</a>
         <a href="/manga/{{$mangas->manga_id}}/edit"  class="btn btn-sm btn-primary ">Edit Manga</a>
@@ -17,6 +18,7 @@
         {{Form::submit('Delete Manga',['class' => 'btn btn-sm btn-danger'])}}
 
         {!! Form::close() !!}
+        @endcan
     <br>
     </div>
     <div class="row">

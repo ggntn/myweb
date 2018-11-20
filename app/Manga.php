@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Manga extends Model
 {
     protected $fillable = [
+        'chap_id',
         'manga_name',
         'detail',
         'image'

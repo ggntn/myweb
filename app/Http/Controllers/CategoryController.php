@@ -109,5 +109,4 @@ class CategoryController extends Controller
         $this->middleware('auth',['only'=>
             ['pass_value']]);
     }
-
 }

@@ -5,10 +5,8 @@ use App\Author;
 use App\Category;
 use App\Chap;
 use App\Manga;
-use App\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -23,14 +21,12 @@ class MangasController extends Controller
     {
 //        $mangas= Manga::all();
 //        $mangas= Manga::orderBy('manga_name','asc')->get();
-
         $categories= Category::all();
         $mangas= Manga::orderBy('manga_name','desc')->paginate(10);
 
 
        return view('mangas.index' )->with('mangas',$mangas)
-                                     ->with('categories',$categories)
-                                    ;
+                                     ->with('categories',$categories);
 
     }
 
@@ -41,12 +37,10 @@ class MangasController extends Controller
      */
     public function create()
     {
-//        $user = User::all();
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-
         return view('mangas.create');
     }
 //
@@ -68,8 +62,7 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-
-        $this->validate($request, [
+      $this->validate($request, [
          'manga_name'=>'required',
           'author_id'=>'required',
           'detail'=>'required',
@@ -199,7 +192,6 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-
         $mangas = Manga::findorfail($id);
 //        $categories = Category::findorfail($id);
 
@@ -224,7 +216,6 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-
         $this->validate($request, [
             'manga_name'=>'required',
             'author_id'=>'required',
@@ -277,7 +268,6 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-
         $mangas =  Manga::find($id);
 
         if($mangas->image!= 'noimage.jpg' ){

@@ -25,8 +25,8 @@ class CreateMangasTable extends Migration
 
 
 
-                $table->integer('manga_chap_id')->unsigned();
-                $table->foreign('manga_chap_id')->references('manga_chap_id')->on('chapters');
+                $table->integer('chap_id')->unsigned();
+//                $table->foreign('chap_id')->references('chap_id')->on('chapters');
 
                 $table->string('manga_name');
                 $table->text('detail');

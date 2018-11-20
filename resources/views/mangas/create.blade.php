@@ -22,11 +22,11 @@
         {!! Form::text('author_id', null, ['class'=>'form-control']) !!}
     </div>
 
-
     <div class="form-group">
-        {!! Form::label('chap', 'Chapter id: ') !!}
+        {!! Form::label('chapter', 'Chapter id: ') !!}
         {!! Form::text('chap_id', null, ['class'=>'form-control']) !!}
     </div>
+
     <div class="form-group">
         {!! Form::label('detail', 'Detail: ') !!}
         {!! Form::textarea('detail', null,['class'=>'form-control']) !!}

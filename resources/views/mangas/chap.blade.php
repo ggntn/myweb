@@ -15,12 +15,14 @@
         @foreach($chapters as $chapter)
 
             @if(($chapter->chap_name) == ($ch))
-                {!! Form::open(['action' => ['ChapsController@destroy',$chapter->chap_name],'method' => 'POST' ]) !!}
+                @can('create/edit/delete-mangas/chap', Auth::user())
+                {!! Form::open(['action' => ['ChapsController@destroy',$chapter->chap_id],'method' => 'POST' ]) !!}
 
                 {{Form::hidden('_method','DELETE')}}
                 {{Form::submit('Delete Chapter',['class' => 'btn btn-sm btn-danger'])}}
 
                 {!! Form::close() !!}
+                @endcan
                 {{$chapter->chap_id}}
                 @foreach(json_decode($chapter->image, true) as $images)
                     <div class="align-content-xl-center">

@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('create-mangas', function ($user) {
+        Gate::define('create/edit/delete-mangas/chap', function ($user) {
             if (strcmp($user->role_id, "1")==0) {
                 return true;
             }
@@ -33,6 +33,7 @@ class AuthServiceProvider extends ServiceProvider
                 return false;
             }
         });
-    }
 
+
+    }
 }
