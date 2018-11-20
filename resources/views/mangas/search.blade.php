@@ -2,6 +2,7 @@
 
 @section('content2')
     <br>
+    <br>
     <form action="/search" method="POST" role="search">
         {{ csrf_field() }}
         <div class="input-group">
@@ -13,12 +14,12 @@
         </span>
         </div>
     </form>
+
     @if(isset($details))
         <h1>Search for <b>{{$query}}</b> are :</h1>
+
         <tbody>
-        <div class="album py-5 bg-light">
-            <div class="container">
-                <div class="row">
+        <div class="row">
         @foreach($details as $mangas)
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm">
@@ -37,10 +38,9 @@
                 </div>
             </div>
          @endforeach
-                </div>
-            </div>
         </div>
         </tbody>
+
         @else
             <h1> not found</h1>
 

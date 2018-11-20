@@ -5,6 +5,17 @@
     {{--<h1>Home</h1>--}}
     @include('inc.message')
     {{--{{$mangas->links()}}--}}
+    <form action="/search" method="POST" role="search">
+        {{ csrf_field() }}
+        <div class="input-group">
+            <input type="text" class="form-control" name="q"
+                   placeholder="Search Manga"> <span class="input-group-btn">
+            <button type="submit" class="btn btn-default border-radius: 50%">
+                Search
+            </button>
+        </span>
+        </div>
+    </form>
 
 
     <div class="album py-5 bg-light">

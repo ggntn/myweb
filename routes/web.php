@@ -1,5 +1,6 @@
 <?php
 use App\Manga;
+use App\Author;
 use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +48,8 @@ Route::resource('chap','ChapsController');
 Route::any('/search',function(){
     $q = Input::get ( 'q' );
     if($q != ""){
-        $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();
+        $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get ();
+
         if(count($mangas) > 0)
             return view('mangas.test')->withDetails($mangas)->withQuery ( $q );
     }
