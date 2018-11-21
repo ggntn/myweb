@@ -39,36 +39,25 @@
     </div>
 
     {{--<div class="form-group">--}}
-        {{--<label class="col-sm-3 control-label">--}}
-           {{--Test pic--}}
-        {{--</label>--}}
-        {{--<div class="col-sm-9">--}}
-                            {{--<span class="btn btn-default btn-file">--}}
-                                {{--<input id="input-2" name="input2[]" type="file" class="file" multiple data-show-upload="true" data-show-caption="true">--}}
-                            {{--</span>--}}
-        {{--</div>--}}
+        {{--{!! Form::label('tag_list', 'Tags: ') !!}--}}
+        {{--{!! Form::select('tag_list[]', $tag_list, null,--}}
+        {{--['multiple', 'class' => 'form-control']) !!}--}}
     {{--</div>--}}
-    {{--<form action="'upload" id="upload" enctype="multipartform-data">--}}
-        {{--<input type="file" name="file[]" multiple><br>--}}
 
-    {{--</form>--}}
-    {{--<script>--}}
-        {{--var form = document.getElementById('upload');--}}
-        {{--var request = new XMLHttpRequest();--}}
-        {{--form.addEventListener('Submit',function(e){--}}
-            {{--e.preventDefault();--}}
-            {{--var formdata = new FormData(form);--}}
-            {{--request.open('post','/upload');--}}
-            {{--request.addEventListener("load",transferComplete);--}}
-            {{--request.send(formdata);--}}
-        {{--});--}}
-        {{--function transferComplete(data){--}}
-            {{--console.log(data.currentTarget.response);--}}
-        {{--}--}}
-    {{--</script>--}}
+        {!! Form::label('tags', 'Tags: ') !!}
+       <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+           @foreach($tags as $tag)
+               <option value='{{$tag->id}}'>{{$tag->name}}</option>
+           @endforeach
+       </select>
+
+
+
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}
-
-
     {!! Form::close() !!}
 
+
+    <script type="text/javascript">
+        $('.select2-multi').select2();
+    </script>
 @endsection

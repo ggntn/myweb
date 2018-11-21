@@ -28,7 +28,7 @@
                         <b class="card-text"> {{$mangas->manga_name}} </b>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="/manga/{{$mangas->manga_id}}"{{$mangas->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
+                                <a href="/manga/{{$mangas->id}}"{{$mangas->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
 
                             </div>
                             <small class="text-muted"></small>
@@ -39,13 +39,15 @@
         @endforeach
         </tbody>
     @endif
+
     <div class="row">
 
     <h1>{{$mangas->manga_name}}</h1>
+
         @can('create/edit/delete-mangas/chap', Auth::user())
-        {!! Form::open(['action' => ['MangasController@destroy',$mangas->manga_id],'method' => 'POST' ]) !!}
+        {!! Form::open(['action' => ['MangasController@destroy',$mangas->id],'method' => 'POST' ]) !!}
         <a href="/create_chap"  class="btn btn-sm btn-success ">Create Chapter</a>
-        <a href="/manga/{{$mangas->manga_id}}/edit"  class="btn btn-sm btn-primary ">Edit Manga</a>
+        <a href="/manga/{{$mangas->id}}/edit"  class="btn btn-sm btn-primary ">Edit Manga</a>
 
         {{Form::hidden('_method','DELETE')}}
         {{Form::submit('Delete Manga',['class' => 'btn btn-sm btn-danger'])}}
@@ -71,6 +73,16 @@
                     <small>{{$cate->category_name}}</small>
                 @endif
             @endforeach
+            <hr>
+            @unless($mangas->tags->isEmpty())
+                <div>
+                    <h2>Tags</h2>
+                    @foreach($mangas->tags as $tag)
+                        <span class="badge badge-info"> {{ $tag->name }} </span>
+                        &nbsp
+                    @endforeach
+                </div>
+                @endunless
         </div>
 
     </div>
@@ -79,45 +91,20 @@
     <div class="row">
 
         @foreach($chapters as $chapter)
-            {{--@if(($mangas->manga_id) == 1)--}}
+            @if(($mangas->id) == 1)
             @if(($chapter->chap_id) == ($mangas->chap_id))
                 <div class="col-md-7">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap/{{$chapter->chap_name}}">{{$chapter->chap_name}}</a>
-                    {{--<b>{{$mangas->manga_name}}</b>--}}
+                    <b>{{$mangas->manga_name}}</b>
 
                 </div>
             @endif
-            {{--@endif--}}
+            @endif
 
         @endforeach
+
     </div>
-    {{--</div>--}}
 
-    {{--{{-test--}}
-    {{--<div class="row">--}}
-        {{--{{$chapters}}--}}
-        {{--@foreach($mangas as $manga)--}}
-            {{--@if(($mangas->manga_id) == 1)--}}
-
-            {{--<div class="col-md-7">--}}
-                {{--{{$mangas->manga_name}}--}}
-                {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">{{$mangas->manga_name}} {{$mangas->chap_id}}</a>--}}
-                {{--<b>{{$mangas->manga_name}}</b>--}}
-            {{--</div>--}}
-            {{--@endif--}}
-        {{--@endforeach--}}
-
-    {{--</div>--}}
-
-        {{--<div class="col-md-7">--}}
-            {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>--}}
-        {{--</div>--}}
-
-        {{--<div class="col-md-7">--}}
-            {{--<a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/...">Episode</a>--}}
-        {{--</div>--}}
-
-        {{--{{$chapters->chap_name}}--}}
             <hr>
             <footer>
                 {{$chapters->links()}}

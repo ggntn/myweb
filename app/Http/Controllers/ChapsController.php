@@ -17,8 +17,8 @@ class ChapsController extends Controller
     public function index()
     {
         $mangas = Manga::all();
-        $chapters= Chap::orderBy('chap_name','desc')->paginate(10);
-        return view('mangas.home' )->with('mangas',$mangas)
+        $chapters= Chap::orderBy('created_at','desc')->paginate(10);
+        return view('mangas.chaphome' )->with('mangas',$mangas)
                                         ->with('chapters',$chapters);
     }
 
@@ -98,8 +98,8 @@ class ChapsController extends Controller
      */
     public function show($id)
     {
-//        $chapters = Chap::findorfail($id);
-//        return view('mangas.chap' )->with('chapters',$chapters)
+        $chapters = Chap::findorfail($id);
+        return view('mangas.chap' )->with('chapters',$chapters)
 
                                                                     ;
     }

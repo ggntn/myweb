@@ -5,6 +5,7 @@ use App\Author;
 use App\Category;
 use App\Chap;
 use App\Manga;
+use App\Tag;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -41,14 +42,11 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-        return view('mangas.create');
+//        $tag_list = Tag::pluck('name', 'id');
+        $tags = Tag::all();
+        return view('mangas.create')->withTags($tags);
     }
-//
-//    public function create_chap()
-//    {
-////        $categories= Category::all();
-//        return view('mangas.create_chap');
-//    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -60,15 +58,16 @@ class MangasController extends Controller
     {
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
-
         }
+//        dd($request);
       $this->validate($request, [
          'manga_name'=>'required',
           'author_id'=>'required',
           'detail'=>'required',
           'chap_id'=>'required',
           'image'=>'image|nullable|max:1999',
-          'category_id'=>'required'
+          'category_id'=>'required',
+
       ]);
       //file upload
         if($request->hasFile('image')){
@@ -89,43 +88,24 @@ class MangasController extends Controller
 
       //create manga
       $mangas = new Manga;
-
       $mangas->manga_name = $request->input('manga_name');
       $mangas->detail = $request->input('detail');
       $mangas->author_id = $request->input('author_id');
       $mangas->chap_id = $request->input('chap_id');
       $mangas->image = $fileNametoStore;
       $mangas->category_id = $request->input('category_id');
-
       $mangas->save();
+        if (isset($request->tags)){
+            $mangas->tags()->sync($request->tags);
 
-//      save category
-//      $categories = new Category;
-//      $categories->category_id = $request->input('category_id');
-//      $categories->category_name= $request->input('category');
-//      $categories->save();
-//
-//        $authors = new Author;
-//        $authors->author_id = $request->input('author_id');
-//        $authors->author_name = $request->input('author');
-//        $authors->save();
-//
-//        $details = new Detail;
-//        $details->detail_id = $request->input('detail_id');
-//        $details->detail_name = $request->input('detail');
-//        $details->save();
-//
-//        $titles = new Title;
-//        $titles->title_id = $request->input('title_id');
-//        $titles->title_name = $request->input('title');
-//        $titles->save();
-//
-//        $chapters = new Chap;
-//        $chapters->chap_id = $request->input('chap_id');
-//        $chapters->save();
+        }else{
+            $mangas->tags()->sync(array());
+        }
 
-
-
+//        $tagsId = $request->input('tag_list');
+//        if(!empty($tagsId))
+//            $mangas->tags()->sync($tagsId);
+//
       return redirect('/manga')->with('success', 'Manga create');
 
     }
@@ -163,19 +143,17 @@ class MangasController extends Controller
 
     public function show($id)
     {
-        // wait to fix chap
-//        return Manga::find($id);
+
           $mangas = Manga::findorfail($id);
           $categories = Category::all();
         $chapters= Chap::orderBy('chap_name','desc')->paginate(10);
-//        $categories = Category::findorfail($id);
+        $tags = Tag::all();
+//
 
-
-
-//          $chapters = Chap::findorfail($id);
         return view('mangas.show' )->with('mangas',$mangas)
                                         ->with('chapters',$chapters)
                                         ->with('categories',$categories)
+                                        ->with('tags',$tags)
                                         ;
 
     }
@@ -193,12 +171,14 @@ class MangasController extends Controller
 
         }
         $mangas = Manga::findorfail($id);
+        $tags = Tag::all();
+//        $tag_list = Tag::pluck('name', 'id');
 //        $categories = Category::findorfail($id);
 
 
 //          $chapters = Chap::findorfail($id);
-        return view('mangas.edit' )->with('mangas',$mangas);
-//                                        ->with('chapters',$chapters)
+        return view('mangas.edit' )->with('mangas',$mangas)
+                                        ->with('tags',$tags);
 //                                        ->with('categories',$categories)
 
     }
@@ -216,6 +196,7 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
+
         $this->validate($request, [
             'manga_name'=>'required',
             'author_id'=>'required',
@@ -252,6 +233,8 @@ class MangasController extends Controller
         $mangas->category_id = $request->input('category_id');
         $mangas->detail = $request->input('detail');
         $mangas->save();
+
+
         return redirect('/manga')->with('success', 'Manga update');
     }
 
@@ -279,47 +262,7 @@ class MangasController extends Controller
         return redirect('/manga')->with('success', 'Manga delete');
     }
 
-//    public function editchap($id)
-//    {
-//        $mangas = Manga::findorfail($id);
-//        $chapters = Chap::findorfail($id);
-//
-//        return view('mangas.edit_chap' )->with('mangas',$mangas)
-//            ->with('chapters',$chapters);
-//
-//    }
-//    public function updatechap(Request $request, $id)
-//    {
-//        $this->validate($request, [
-//
-//            'chap_id'=>'required',
-//            'chap_name'=>'required',
-//            'image'=>'required',
-//
-//        ]);
-//        //create Chap
-//        $chapters =  Chap::findorFail($id);
-//
-//        $chapters->chap_id = $request->input('chap_id');
-//        $chapters->chap_name = $request->input('chap_name');
-//        $chapters->image = $request->input('image');
-//
-//
-//        $chapters->save();
-//
-//        return redirect('/manga')->with('success', 'Chap edit');
-//    }
 
-//    public function upload(Request $request)
-//    {
-//        $files= $request->file('file');
-//        if(!empty($files)):
-//            foreach ($files as $file):
-//                Storage::put($file->getClientOriginalName(),file_get_contents($file));
-//            endforeach;
-//         endif;
-//
-//    }
     public function __construct(){
         $this->middleware('auth',['except'=>
                                                 ['index']]);

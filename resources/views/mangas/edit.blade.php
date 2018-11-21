@@ -38,6 +38,14 @@
         {!! Form::file('image', null,
         ['class'=>'form-control']) !!}
     </div>
+
+    {!! Form::label('tags', 'Tags: ') !!}
+    <select class="form-control select2-multi" name="tags[]" multiple="multiple">
+        @foreach($tags as $tag)
+            <option value='{{$tag->id}}'>{{$tag->name}}</option>
+        @endforeach
+
+    </select>
     {{Form::hidden('_method','PUT')}}
     {{Form::hidden('old_image',$mangas->image)}}
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}

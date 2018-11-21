@@ -44,6 +44,7 @@ Route::get('/chap/{value}','ChapsController@pass_value');
 
 Route::resource('manga','MangasController');
 Route::resource('chap','ChapsController');
+Route::resource('tags','TagController',['except'=>['create']]);
 
 Route::any('/search',function(){
     $q = Input::get ( 'q' );

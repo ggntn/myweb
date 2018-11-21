@@ -10,10 +10,12 @@ class Manga extends Model
         'chap_id',
         'manga_name',
         'detail',
-        'image'
+        'image',
+
+
     ];
 //    pk key
-    public $primaryKey = 'manga_id';
+//    public $primaryKey = 'manga_id';
 //    table
     protected $table = 'mangas';
 
@@ -25,9 +27,19 @@ class Manga extends Model
     public function category(){
         return $this->belongsTo('App\Role');
     }
-    public function author(){
+    public function author()
+    {
         return $this->belongsTo('App\Author');
     }
+//    }
 
+//    tags
+//    public function getTagListAttribute(){
+//        return $this->tags->pluck('id');
+//    }
 
+    public function tags(){
+        return $this->belongsToMany('App\Tag');
+
+    }
 }
