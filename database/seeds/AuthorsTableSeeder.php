@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class AuthorsTableSeeder extends Seeder
 {
@@ -12,14 +13,30 @@ class AuthorsTableSeeder extends Seeder
     public function run()
     {
         DB::table('authors')->insert([
-            ['author_name' => 'Toriyama'],
-            ['author_name' => 'Akira'],
-            ['author_name' => 'JK Rowling'],
-            ['author_name' => 'Akiyama'],
-            ['author_name' => 'Tsunade'],
-            ['author_name' => 'Sasuke'],
-            ['author_name' => 'Naruto'],
-            ['author_name' => 'Buroto'],
+            ['author_name' => 'Toriyama',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'Akira',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'JK Rowling',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'Akiyama',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'Tsunade',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'Sasuke',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'Naruto',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['author_name' => 'Buroto',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
         ]);
     }
 }

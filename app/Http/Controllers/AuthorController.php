@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
 use Illuminate\Http\Request;
+use App\Author;
 
-class TagController extends Controller
+class AuthorController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
@@ -16,8 +16,8 @@ class TagController extends Controller
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
         }
-        $tags = Tag::all();
-        return view('tags.index')->withTags($tags);
+        $authors = Author::all();
+        return view('authors.index')->with('authors',$authors);
     }
 
     public function store(Request $request)
@@ -25,14 +25,16 @@ class TagController extends Controller
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
         }
-        $this->validate($request,array('name'=>'required|max:255'));
-        $tag = new Tag;
-        $tag->name =$request->name;
-        $tag->save();
 
-        return redirect('/tags')->with('success', 'Tag create');
+        $this->validate($request, [
+            'author_name'=>'required',
+        ]);
+            //create manga
+        $authors = new Author;
+        $authors->author_name = $request->input('author_name');
+        $authors->save();
 
+        return redirect('/author')->with('success', 'Author create');
     }
-
 
 }

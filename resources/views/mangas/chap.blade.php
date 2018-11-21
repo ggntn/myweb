@@ -27,7 +27,7 @@
         @foreach($chapters as $chapter)
 
             @if(($chapter->chap_name) == ($ch))
-                @can('create/edit/delete-mangas/chap', Auth::user())
+                @can('admin', Auth::user())
                 {!! Form::open(['action' => ['ChapsController@destroy',$chapter->manga_chap_id],'method' => 'POST' ]) !!}
 
                 {{Form::hidden('_method','DELETE')}}

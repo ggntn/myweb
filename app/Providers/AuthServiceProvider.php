@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('create/edit/delete-mangas/chap', function ($user) {
+        Gate::define('admin', function ($user) {
             if (strcmp($user->role_id, "1")==0) {
                 return true;
             }

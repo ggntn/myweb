@@ -13,47 +13,29 @@ use Illuminate\Support\Facades\Storage;
 
 class MangasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-//        $mangas= Manga::all();
-//        $mangas= Manga::orderBy('manga_name','asc')->get();
         $categories= Category::all();
         $mangas= Manga::orderBy('manga_name','desc')->paginate(10);
-
 
        return view('mangas.index' )->with('mangas',$mangas)
                                      ->with('categories',$categories);
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
-
         }
+
         $tag_list = Tag::pluck('name', 'id');
-//        $tags = Tag::all();
+
         return view('mangas.create', compact('tag_list'));
     }
 
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         if(auth()->user()->role_id != 1){
@@ -101,39 +83,26 @@ class MangasController extends Controller
         if(!empty($tagsId))
             $mangas->tags()->sync($tagsId);
 
-//        $tagsId = $request->input('tag_list');
-//        if(!empty($tagsId))
-//            $mangas->tags()->sync($tagsId);
-//
       return redirect('/manga')->with('success', 'Manga create');
 
     }
 
 
-//
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
     public function show($id)
     {
 
-          $mangas = Manga::findorfail($id);
-          $categories = Category::all();
+        $mangas = Manga::findorfail($id);
+        $categories = Category::all();
+        $authors = Author::all();
         $chapters= Chap::orderBy('chap_name','desc')->paginate(10);
         $tags = Tag::all();
 //
-
         return view('mangas.show' )->with('mangas',$mangas)
                                         ->with('chapters',$chapters)
                                         ->with('categories',$categories)
                                         ->with('tags',$tags)
+                                        ->with('authors',$authors)
                                         ;
-
     }
 
     public function edit($id)
@@ -155,7 +124,6 @@ class MangasController extends Controller
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
         }
-
 
         $this->validate($request, [
             'manga_name'=>'required',

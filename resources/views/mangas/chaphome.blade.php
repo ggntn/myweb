@@ -51,7 +51,7 @@
             </div>
         </div>
         <footer>
-            {{--{{$mangas->links()}}--}}
+            {{$chapters->links()}}
         </footer>
     </div>
 

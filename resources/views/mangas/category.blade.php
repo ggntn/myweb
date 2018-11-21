@@ -22,9 +22,6 @@
             <div class="row">
     @foreach($categories as $category)
 
-
-
-            {{--<h1>{{$category->category_name}}</h1>--}}
             @foreach($mangas as $manga)
 
             @if( ($category->category_id)== ($manga->category_id))
@@ -39,7 +36,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a href="/manga/{{$manga->id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
-                                            {{--<a href="/edit/{{$manga->manga_id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Edit</a>--}}
+
                                         </div>
                                         <small class="text-muted"></small>
                                     </div>

@@ -44,7 +44,7 @@
 
     <h1>{{$mangas->manga_name}}</h1>
 
-        @can('create/edit/delete-mangas/chap', Auth::user())
+        @can('admin', Auth::user())
         {!! Form::open(['action' => ['MangasController@destroy',$mangas->id],'method' => 'POST' ]) !!}
         <a href="/create_chap"  class="btn btn-sm btn-success ">Create Chapter</a>
         <a href="/manga/{{$mangas->id}}/edit"  class="btn btn-sm btn-primary ">Edit Manga</a>
@@ -70,24 +70,33 @@
             <h2>Category</h2>
             @foreach($categories as $cate)
                 @if(($cate->category_id) == ($mangas->category_id))
-                    <small>{{$cate->category_name}}</small>
+                    <h3> <span class="badge badge-danger">{{$cate->category_name}}</span></h3>
                 @endif
             @endforeach
             <hr>
             @unless($mangas->tags->isEmpty())
                 <div>
                     <h2>Tags</h2>
+                    <h3>
                     @foreach($mangas->tags as $tag)
                         <span class="badge badge-info"> {{ $tag->name }} </span>
                         &nbsp
                     @endforeach
+                    </h3>
                 </div>
+            <hr>
                 @endunless
+            @foreach($authors as $author)
+                @if(($author->author_id) == ($mangas->author_id))
+                    <h2>Authors</h2>
+                    <small></small>{{$author->author_name}}
+                @endif
+            @endforeach
         </div>
 
     </div>
     <hr>
-
+    <h2>All Chapters</h2>
     <div class="row">
 
         @foreach($chapters as $chapter)

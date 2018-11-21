@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -12,13 +13,27 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            ['category_name' => 'Action'],
-            ['category_name' => 'Adventure'],
-            ['category_name' => 'Sci-Fi'],
-            ['category_name' => 'Horror'],
-            ['category_name' => 'Comady'],
-            ['category_name' => 'Romantic'],
-            ['category_name' => 'Fantasy'],
+            ['category_name' => 'Action',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['category_name' => 'Adventure',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['category_name' => 'Sci-Fi',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['category_name' => 'Horror',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['category_name' => 'Comady',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['category_name' => 'Romantic',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
+            ['category_name' => 'Fantasy',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')],
         ]);
     }
 }

@@ -4,7 +4,6 @@
 
 @section('content2')
     <br>
-    <br>
     <h2>Create Chapter</h2>
     @include('inc.message')
     {!! Form::open(['action' => 'ChapsController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}

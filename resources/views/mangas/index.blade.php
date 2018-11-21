@@ -68,9 +68,9 @@
 
             </div>
         </div>
-        <footer>
-            {{$mangas->links()}}
-        </footer>
+        {{--<footer>--}}
+            {{--{{$mangas->links()}}--}}
+        {{--</footer>--}}
     </div>
 
 @endsection

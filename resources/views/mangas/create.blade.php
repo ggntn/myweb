@@ -4,7 +4,6 @@
 
 @section('content2')
     <br>
-    <br>
     <h2>Create Manga</h2>
     @include('inc.message')
     {!! Form::open(['action' => 'MangasController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
