@@ -12,9 +12,8 @@ class ChapsController extends Controller
 
     public function index()
     {
-        if(auth()->user()->role_id != 1){
-            return redirect('/manga')->with('error','Unauthorized Page');
-        }
+
+
         $mangas = Manga::all();
         $chapters= Chap::orderBy('created_at','desc')->paginate(10);
         return view('mangas.chaphome' )->with('mangas',$mangas)
@@ -26,6 +25,7 @@ class ChapsController extends Controller
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
         }
+
         return view('mangas.create_chap');
     }
 
@@ -97,5 +97,8 @@ class ChapsController extends Controller
         return view('mangas.chap',$data)->with('chapters',$chapters)
                                             ->with('mangas',$mangas);
 
+    }
+    public function __construct(){
+        $this->middleware('auth');
     }
 }

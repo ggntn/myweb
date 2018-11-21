@@ -58,7 +58,7 @@
 
     @endforeach
     @else
-        <p>No post</p>
+        <h5><strong>No post</strong></h5>
 
     @endif
     <footer>

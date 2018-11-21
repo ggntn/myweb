@@ -42,7 +42,7 @@
         </tbody>
 
         @else
-            <h1> not found</h1>
+        <h1><span class="badge badge-warning"> not found</span></h1>
 
     @endif
 

@@ -25,6 +25,7 @@
                     @foreach($mangas as $manga)
                     @foreach($chapters as $chapter)
 
+                            @if(($chapter->chap_id) == ($manga->chap_id))
                         <div class="col-md-4">
                             <div class="card mb-4 shadow-sm">
 
@@ -41,11 +42,12 @@
                                 </div>
                             </div>
                         </div>
+                            @endif
 
                     @endforeach
                     @endforeach
                 @else
-                    <p>No post</p>
+                    <h5><strong>No post</strong></h5>
                 @endif
 
             </div>

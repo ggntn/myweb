@@ -31,8 +31,10 @@ class MangasController extends Controller
         }
 
         $tag_list = Tag::pluck('name', 'id');
-
-        return view('mangas.create', compact('tag_list'));
+        $categories = Category::pluck('category_name', 'category_id');
+        $authors = Author::pluck('author_name', 'author_id');
+//        $chapters = Chap::pluck('chap_name', 'chap_id');
+        return view('mangas.create', compact('tag_list'))->with('categories',$categories)->with('authors',$authors);
     }
 
 
@@ -113,9 +115,12 @@ class MangasController extends Controller
 
         $mangas = Manga::findorfail($id);
         $tag_list = Tag::pluck('name', 'id');
-
+        $categories = Category::pluck('category_name', 'category_id');
+        $authors = Author::pluck('author_name', 'author_id');
         return view('mangas.edit' )->with('mangas',$mangas)
-                                         ->with('tag_list',$tag_list);
+                                         ->with('tag_list',$tag_list)
+                                        ->with('categories',$categories)
+                                         ->with('authors',$authors);
     }
 
 

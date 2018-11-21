@@ -37,4 +37,6 @@ class AuthorController extends Controller
         return redirect('/author')->with('success', 'Author create');
     }
 
+
+
 }

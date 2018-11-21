@@ -12,18 +12,19 @@
         {!! Form::text('manga_name', null, ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
-        {!! Form::label('category', 'Category id: ') !!}
-        {!! Form::text('category_id', null, ['class'=>'form-control']) !!}
+        {!! Form::label('category', 'Category : ') !!}
+        {!! Form::select('category_id', $categories, null,[ 'class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
-        {!! Form::label('author', 'Author id: ') !!}
-        {!! Form::text('author_id', null, ['class'=>'form-control']) !!}
+        {!! Form::label('author', 'Author : ') !!}
+        {!! Form::select('author_id', $authors, null,[ 'class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('chapter', 'Chapter id: ') !!}
         {!! Form::text('chap_id', null, ['class'=>'form-control']) !!}
+        {{--{!! Form::select('chap_id', $chapters, null,[ 'class' => 'form-control']) !!}--}}
     </div>
 
     <div class="form-group">

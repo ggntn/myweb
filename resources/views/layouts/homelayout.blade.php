@@ -27,7 +27,7 @@
 <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav"  >
     <div class="container" >
 
-        <a class="navbar-brand js-scroll-trigger" href="/manga">Humble Manga</a>
+        <a class="navbar-brand js-scroll-trigger" href="/manga">{{ trans('site.humble')}}</a>
         <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
         </button>
@@ -35,75 +35,78 @@
             <ul class="navbar-nav ml-auto">
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cataegories</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ trans('site.categories')}}</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownThemes">
                         {{--@yield('category')--}}
                         <a class="dropdown-item" href="/categories/Action">
                             <i class="fa fa-star" aria-hidden="true"></i>
-                            Action </a>
+                            {{ trans('site.action')}}</a>
 
                         <a class="dropdown-item" href="/categories/Adventure">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        Adventure </a>
+                            {{ trans('site.adventure')}} </a>
 
                         <a class="dropdown-item" href="/categories/Sci-Fi">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        Sci-Fi </a>
+                            {{ trans('site.scifi')}} </a>
 
                         <a class="dropdown-item" href="/categories/Horror">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        Horror </a>
+                            {{ trans('site.horror')}} </a>
 
                         <a class="dropdown-item" href="/categories/Comady">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        Comady </a>
+                            {{ trans('site.comady')}} </a>
 
                         <a class="dropdown-item" href="/categories/Romantic">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        Romantic </a>
+                            {{ trans('site.romantic')}} </a>
 
                         <a class="dropdown-item" href="/categories/Fantasy">
                         <i class="fa fa-star" aria-hidden="true"></i>
-                        Fantasy </a>
+                            {{ trans('site.fantasy')}} </a>
 
 
                     </div>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">View All Chapters</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap">{{ trans('site.viewallchap')}}</a>
                 </li>
+
+
 
                 @guest
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/login') }}">Login</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ url('/login') }}">{{ trans('site.login')}}</a>
                 </li>
 
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('register') }}">Register</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('register') }}">{{ trans('site.register')}}</a>
                 </li>
 
                 @else
 
 
 
+
                     @can('admin', Auth::user())
                     <li class="nav-item dropdown">
-                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Create</a>
+                                <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle" href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ trans('site.create')}}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownThemes">
                                     <a class="dropdown-item" href="/create">
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        Create Manga </a>
+                                        {{ trans('site.createmanga')}}</a>
 
                                     <a class="dropdown-item" href="/create_chap">
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        Create Chapter Manga </a>
+                                        {{ trans('site.createchap')}}</a>
 
                                     <a class="dropdown-item" href="/tag">
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        Create Tag </a>
+                                        {{ trans('site.createtag')}}</a>
                                     <a class="dropdown-item" href="/author">
                                         <i class="fa fa-star" aria-hidden="true"></i>
-                                        Create Author </a>
+                                        {{ trans('site.createauthor')}}</a>
                                 </div>
                      </li>
                     @endcan()
@@ -113,10 +116,10 @@
                     <li class="nav-item  dropdown">
                         <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger dropdown-toggle"href="#" id="dropdownThemes" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             @if( (Auth::user()->role_id)==1)
-                                {{ Auth::user()->name }} AS {{'admin'}}
+                                {{ Auth::user()->name }} {{ trans('site.admin')}}
 
                             @else
-                                {{ Auth::user()->name }} AS {{'member'}}
+                                {{ Auth::user()->name }} {{ trans('site.member')}}
                             @endif
                             <span class="caret"></span>
                         </a>
@@ -125,7 +128,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                               {{ trans('site.logout')}}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -138,6 +141,15 @@
 
 
                 @endguest
+                <li>
+                    @if(session()->has('locale'))
+                        <a href="{{ url('lang/' . ((session()->get('locale')=='en')? 'th' : 'en')) }}"
+                           class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"> {{ Str::upper((session()->get('locale')=='en')?'th':'en') }}
+                        </a>
+                    @else
+                        <a href="{{ url('lang/th') }}" class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"> TH </a>
+                    @endif
+                </li>
                 {{--<li class="form-inline  mx-0 mx-lg-1">--}}
                     {{--<input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">--}}
                     {{--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--}}

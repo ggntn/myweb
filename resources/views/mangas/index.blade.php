@@ -9,9 +9,9 @@
         {{ csrf_field() }}
         <div class="input-group">
             <input type="text" class="form-control" name="q"
-                   placeholder="Search Manga"> <span class="input-group-btn">
+                   placeholder="  {{ trans('site.searchm')}}"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default border-radius: 50%">
-                Search
+                  {{ trans('site.search')}}
             </button>
         </span>
         </div>
@@ -63,7 +63,7 @@
          @endforeach
 
     @else
-        <p>No post</p>
+                    <h5><strong>No post</strong></h5>
     @endif
 
             </div>

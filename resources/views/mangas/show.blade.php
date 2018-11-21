@@ -11,7 +11,7 @@
             <input type="text" class="form-control" name="q"
                    placeholder="Search Manga"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default border-radius: 50%">
-                Search
+                  {{ trans('site.search')}}
             </button>
         </span>
         </div>
@@ -58,7 +58,7 @@
     </div>
     <div class="row">
         <div class="col-md-7">
-                <img class="img-fluid rounded mb-3 mb-md-0" src="/storage/images/{{$mangas->image}}" alt="">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="/storage/images/{{$mangas->image}} " width="720" height="1020">
             </a>
         </div>
         <div class="col-md-5">
@@ -100,13 +100,13 @@
     <div class="row">
 
         @foreach($chapters as $chapter)
-            @if(($mangas->id) == 1)
+
             @if(($chapter->chap_id) == ($mangas->chap_id))
                 <div class="col-md-7">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap/{{$chapter->chap_name}}">{{$chapter->chap_name}}</a>
                 </div>
             @endif
-            @endif
+
 
         @endforeach
 

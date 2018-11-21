@@ -15,7 +15,7 @@
     </form>
 
 
-    <body><h1>{{$cate}}</h1></body>
+    <h1><span class="badge badge-info">{{$cate}}</span></h1>
 
     <div class="album py-5 bg-light">
         <div class="container">

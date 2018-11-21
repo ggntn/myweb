@@ -10,6 +10,7 @@
     <div class="form-group">
         {!! Form::label('chap', 'Chapter id: ') !!}
         {!! Form::text('chapter_id', null, ['class'=>'form-control']) !!}
+
     </div>
 
     <div class="form-group">

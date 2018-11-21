@@ -58,6 +58,11 @@ Route::any('/search',function(){
 //    else return view ('mangas.test')->withMessage('No Details found. Try to search again !');
 });
 
+Route::get('lang/{lang}', function($lang){
+    $availLanguages = ['en', 'th'];
+    Session::put('locale', in_array($lang, $availLanguages)? $lang : Config::get('app.locale'));
+    return redirect()->back();
+});
 //Route::resource('categories','CategoryController');
 //Route::resource('detail','DetailssController');
 

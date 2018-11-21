@@ -15,12 +15,12 @@
     </div>
     <div class="form-group">
         {!! Form::label('category', 'Category id: ') !!}
-        {!! Form::text('category_id',$mangas->category_id, ['class'=>'form-control']) !!}
+        {!! Form::select('category_id', $categories, $mangas->category_id,[ 'class' => 'form-control']) !!}
     </div>
 
     <div class="form-group">
         {!! Form::label('author', 'Author id: ') !!}
-        {!! Form::text('author_id',$mangas->author_id, ['class'=>'form-control']) !!}
+        {!! Form::select('author_id', $authors, $mangas->author_id,[ 'class' => 'form-control']) !!}
     </div>
     {{--<div class="form-group">--}}
     {{--{!! Form::label('author', 'Author : ') !!}--}}
