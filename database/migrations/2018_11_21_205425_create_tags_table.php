@@ -18,6 +18,19 @@ class CreateTagsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::create('manga_tag', function (Blueprint $table) {
+            $table->primary(['manga_id', 'tag_id']);
+
+            $table->integer('manga_id')->unsigned()->index();
+            $table->foreign('manga_id')->references('id')
+                ->on('mangas')->onDelete('cascade');
+
+            $table->integer('tag_id')->unsigned()->index();
+            $table->foreign('tag_id')->references('id')
+                ->on('tags') ->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -27,6 +40,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tags');
+        Schema::drop('manga_tag');
+        Schema::drop('tags');
     }
 }

@@ -6,8 +6,9 @@
     <br>
     <br>
     <h2>Edit Manga</h2>
+
     @include('inc.message')
-    {!! Form::open(['action' => ['MangasController@update',$mangas->manga_id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
+    {!! Form::open(['action' => ['MangasController@update',$mangas->id],'method' => 'POST','enctype'=>'multipart/form-data']) !!}
     <div class="form-group">
         {!! Form::label('manga_name', 'Manga name: ') !!}
         {!! Form::text('manga_name',$mangas->manga_name, ['class'=>'form-control']) !!}
@@ -38,14 +39,19 @@
         {!! Form::file('image', null,
         ['class'=>'form-control']) !!}
     </div>
+    <div class="form-group">
+        {!! Form::label('tag_list', 'Tags: ') !!}
+        {!! Form::select('tag_list[]', $tag_list, null,
+        ['multiple', 'class' => 'form-control']) !!}
+    </div>
 
-    {!! Form::label('tags', 'Tags: ') !!}
-    <select class="form-control select2-multi" name="tags[]" multiple="multiple">
-        @foreach($tags as $tag)
-            <option value='{{$tag->id}}'>{{$tag->name}}</option>
-        @endforeach
+    {{--{!! Form::label('tags', 'Tags: ') !!}--}}
+    {{--<select class="form-control select2-multi" name="tags[]" multiple="multiple">--}}
+        {{--@foreach($tags as $tag)--}}
+            {{--<option value='{{$tag->id}}'>{{$tag->name}}</option>--}}
+        {{--@endforeach--}}
 
-    </select>
+    {{--</select>--}}
     {{Form::hidden('_method','PUT')}}
     {{Form::hidden('old_image',$mangas->image)}}
     {{Form::submit('Submit',['class'=>'btn btn-primary'])}}

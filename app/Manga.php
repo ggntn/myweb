@@ -34,9 +34,9 @@ class Manga extends Model
 //    }
 
 //    tags
-//    public function getTagListAttribute(){
-//        return $this->tags->pluck('id');
-//    }
+    public function getTagListAttribute(){
+        return $this->tags->pluck('id');
+    }
 
     public function tags(){
         return $this->belongsToMany('App\Tag');

@@ -17,10 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/t', function () {
-    return view('mangas.test');
-});
-
 /***********************************************
  Home controller get home layouts
  **********************************************/
@@ -44,7 +40,7 @@ Route::get('/chap/{value}','ChapsController@pass_value');
 
 Route::resource('manga','MangasController');
 Route::resource('chap','ChapsController');
-Route::resource('tags','TagController',['except'=>['create']]);
+//Route::resource('tags','TagController',['except'=>['create']]);
 
 Route::any('/search',function(){
     $q = Input::get ( 'q' );
@@ -52,9 +48,9 @@ Route::any('/search',function(){
         $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get ();
 
         if(count($mangas) > 0)
-            return view('mangas.test')->withDetails($mangas)->withQuery ( $q );
+            return view('mangas.search')->withDetails($mangas)->withQuery ( $q );
     }
-    return view('mangas.test')->withMessage("not found");
+    return view('mangas.search')->withMessage("not found");
 //    $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();  //orWhere('email','LIKE','%'.$q.'%')->get();
 //    if(count($mangas) > 0)
 //        return view('mangas.test')->withDetails($mangas)->withQuery ( $q );

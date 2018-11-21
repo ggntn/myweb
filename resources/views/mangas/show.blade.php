@@ -95,8 +95,6 @@
             @if(($chapter->chap_id) == ($mangas->chap_id))
                 <div class="col-md-7">
                 <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/chap/{{$chapter->chap_name}}">{{$chapter->chap_name}}</a>
-                    <b>{{$mangas->manga_name}}</b>
-
                 </div>
             @endif
             @endif

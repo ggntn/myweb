@@ -2,7 +2,6 @@
 
 @section('content2')
     <br>
-    <br>
     <form action="/search" method="POST" role="search">
         {{ csrf_field() }}
         <div class="input-group">
@@ -39,7 +38,7 @@
                                     <b class="card-text"> {{$manga->manga_name}} </b>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="/manga/{{$manga->manga_id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
+                                            <a href="/manga/{{$manga->id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Detail</a>
                                             {{--<a href="/edit/{{$manga->manga_id}}"{{$manga->manga_name}} class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Edit</a>--}}
                                         </div>
                                         <small class="text-muted"></small>

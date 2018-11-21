@@ -42,9 +42,9 @@ class MangasController extends Controller
             return redirect('/manga')->with('error','Unauthorized Page');
 
         }
-//        $tag_list = Tag::pluck('name', 'id');
-        $tags = Tag::all();
-        return view('mangas.create')->withTags($tags);
+        $tag_list = Tag::pluck('name', 'id');
+//        $tags = Tag::all();
+        return view('mangas.create', compact('tag_list'));
     }
 
 
@@ -67,6 +67,7 @@ class MangasController extends Controller
           'chap_id'=>'required',
           'image'=>'image|nullable|max:1999',
           'category_id'=>'required',
+          'tag_list'=>'required'
 
       ]);
       //file upload
@@ -95,12 +96,10 @@ class MangasController extends Controller
       $mangas->image = $fileNametoStore;
       $mangas->category_id = $request->input('category_id');
       $mangas->save();
-        if (isset($request->tags)){
-            $mangas->tags()->sync($request->tags);
 
-        }else{
-            $mangas->tags()->sync(array());
-        }
+        $tagsId = $request->input('tag_list');
+        if(!empty($tagsId))
+            $mangas->tags()->sync($tagsId);
 
 //        $tagsId = $request->input('tag_list');
 //        if(!empty($tagsId))
@@ -111,28 +110,7 @@ class MangasController extends Controller
     }
 
 
-//    public function store_chaps(Request $request)
-//    {
-//        $this->validate($request, [
 //
-//            'chap_id'=>'required',
-//            'chap_name'=>'required',
-//            'image'=>'required',
-//
-//        ]);
-//        //create Chap
-//        $chapters = new Chap;
-//
-//        $chapters->chap_id = $request->input('chap_id');
-//        $chapters->chap_name = $request->input('chap_name');
-//        $chapters->image = $request->input('image');
-//
-//
-//        $chapters->save();
-//
-//        return redirect('/manga')->with('success', 'Chap create');
-//
-//    }
 
     /**
      * Display the specified resource.
@@ -158,44 +136,26 @@ class MangasController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
-
         }
+
         $mangas = Manga::findorfail($id);
-        $tags = Tag::all();
-//        $tag_list = Tag::pluck('name', 'id');
-//        $categories = Category::findorfail($id);
+        $tag_list = Tag::pluck('name', 'id');
 
-
-//          $chapters = Chap::findorfail($id);
         return view('mangas.edit' )->with('mangas',$mangas)
-                                        ->with('tags',$tags);
-//                                        ->with('categories',$categories)
-
+                                         ->with('tag_list',$tag_list);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
-
         }
+
 
         $this->validate($request, [
             'manga_name'=>'required',
@@ -203,7 +163,8 @@ class MangasController extends Controller
             'detail'=>'required',
             'chap_id'=>'required',
             'image'=>'image|nullable|max:1999',
-            'category_id'=>'required'
+            'category_id'=>'required',
+            'tag_list'=>'required'
         ]);
 
         if($request->hasFile('image')){
@@ -234,16 +195,15 @@ class MangasController extends Controller
         $mangas->detail = $request->input('detail');
         $mangas->save();
 
+        $tagsId = $request->input('tag_list');
+        if(!empty($tagsId))
+            $mangas->tags()->sync($tagsId);
+        else
+            $mangas->tags()->detach();
 
         return redirect('/manga')->with('success', 'Manga update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
 

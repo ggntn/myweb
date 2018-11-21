@@ -38,18 +38,18 @@
         ['class'=>'form-control']) !!}
     </div>
 
-    {{--<div class="form-group">--}}
-        {{--{!! Form::label('tag_list', 'Tags: ') !!}--}}
-        {{--{!! Form::select('tag_list[]', $tag_list, null,--}}
-        {{--['multiple', 'class' => 'form-control']) !!}--}}
-    {{--</div>--}}
+    <div class="form-group">
+        {!! Form::label('tag_list', 'Tags: ') !!}
+        {!! Form::select('tag_list[]', $tag_list, null,
+        ['multiple', 'class' => 'form-control']) !!}
+    </div>
 
-        {!! Form::label('tags', 'Tags: ') !!}
-       <select class="form-control select2-multi" name="tags[]" multiple="multiple">
-           @foreach($tags as $tag)
-               <option value='{{$tag->id}}'>{{$tag->name}}</option>
-           @endforeach
-       </select>
+        {{--{!! Form::label('tags', 'Tags: ') !!}--}}
+       {{--<select class="form-control select2-multi" name="tags[]" multiple="multiple">--}}
+           {{--@foreach($tags as $tag)--}}
+               {{--<option value='{{$tag->id}}'>{{$tag->name}}</option>--}}
+           {{--@endforeach--}}
+       {{--</select>--}}
 
 
 
@@ -57,7 +57,7 @@
     {!! Form::close() !!}
 
 
-    <script type="text/javascript">
-        $('.select2-multi').select2();
-    </script>
+    {{--<script type="text/javascript">--}}
+        {{--$('.select2-multi').select2();--}}
+    {{--</script>--}}
 @endsection
