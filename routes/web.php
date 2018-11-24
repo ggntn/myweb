@@ -20,7 +20,7 @@ Route::get('/', function () {
 /***********************************************
  Home controller get home layouts
  **********************************************/
-//Route::get('/home', 'HomeController@home' );
+
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -30,7 +30,6 @@ Route::get('/create', 'MangasController@create');
 Route::get('/create_chap', 'ChapsController@create');
 
 
-//Route::get('/chap', 'ChapsController@index');
 
 
 Route::get('/categories/{value}','CategoryController@pass_value');
@@ -52,10 +51,7 @@ Route::any('/search',function(){
             return view('mangas.search')->withDetails($mangas)->withQuery ( $q );
     }
     return view('mangas.search')->withMessage("not found");
-//    $mangas = Manga::where('manga_name','LIKE','%'.$q.'%')->get();  //orWhere('email','LIKE','%'.$q.'%')->get();
-//    if(count($mangas) > 0)
-//        return view('mangas.test')->withDetails($mangas)->withQuery ( $q );
-//    else return view ('mangas.test')->withMessage('No Details found. Try to search again !');
+
 });
 
 Route::get('lang/{lang}', function($lang){
@@ -63,6 +59,4 @@ Route::get('lang/{lang}', function($lang){
     Session::put('locale', in_array($lang, $availLanguages)? $lang : Config::get('app.locale'));
     return redirect()->back();
 });
-//Route::resource('categories','CategoryController');
-//Route::resource('detail','DetailssController');
 

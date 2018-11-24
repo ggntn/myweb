@@ -7,13 +7,14 @@
         {{ csrf_field() }}
         <div class="input-group">
             <input type="text" class="form-control" name="q"
-                   placeholder="Search Manga"> <span class="input-group-btn">
-            <button type="submit" class="btn btn-default">
-                Search
+                   placeholder="  {{ trans('site.searchm')}}"> <span class="input-group-btn">
+            <button type="submit" class="btn btn-default border-radius: 50%">
+                  {{ trans('site.search')}}
             </button>
         </span>
         </div>
     </form>
+
 
     @if(isset($details))
         <h1>Search for <b>{{$query}}</b> are :</h1>

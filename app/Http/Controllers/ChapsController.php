@@ -25,8 +25,8 @@ class ChapsController extends Controller
         if(auth()->user()->role_id != 1){
             return redirect('/manga')->with('error','Unauthorized Page');
         }
-
-        return view('mangas.create_chap');
+        $mangas= Manga::pluck('manga_name', 'chap_id');
+        return view('mangas.create_chap')->with('mangas',$mangas);
     }
 
     public function store(Request $request)
@@ -52,8 +52,7 @@ class ChapsController extends Controller
                         $data[]=$filename;
 
                         }
-
-
+//                        dd($data);
         }else{
             $fileNametoStore = 'noimage.jpg';
         }

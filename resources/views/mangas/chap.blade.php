@@ -8,14 +8,13 @@
         {{ csrf_field() }}
         <div class="input-group">
             <input type="text" class="form-control" name="q"
-                   placeholder="Search Manga"> <span class="input-group-btn">
+                   placeholder="  {{ trans('site.searchm')}}"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default border-radius: 50%">
-                Search
+                  {{ trans('site.search')}}
             </button>
         </span>
         </div>
     </form>
-
     {{--<body><h1>{{$ch}}</h1></body>--}}
 
 
@@ -27,13 +26,15 @@
         @foreach($chapters as $chapter)
 
             @if(($chapter->chap_name) == ($ch))
+                <br>
                 @can('admin', Auth::user())
+
                 {!! Form::open(['action' => ['ChapsController@destroy',$chapter->manga_chap_id],'method' => 'POST' ]) !!}
 
-                {{Form::hidden('_method','DELETE')}}
-                {{Form::submit('delete this chapter',['class' => 'btn btn-sm btn-danger'])}}
+                        {{Form::hidden('_method','DELETE')}}
+                        {{Form::submit('Delete This Chapter',['class' => 'btn btn-sm btn-danger'])}}
 
-                {!! Form::close() !!}
+                        {!! Form::close() !!}
                 @endcan
 
                 @foreach(json_decode($chapter->image, true) as $images)

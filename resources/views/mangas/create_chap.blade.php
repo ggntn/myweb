@@ -8,14 +8,14 @@
     @include('inc.message')
     {!! Form::open(['action' => 'ChapsController@store','method' => 'POST','enctype'=>'multipart/form-data']) !!}
     <div class="form-group">
-        {!! Form::label('chap', 'Chapter id: ') !!}
-        {!! Form::text('chapter_id', null, ['class'=>'form-control']) !!}
+        {!! Form::label('chap', 'Manga : ') !!}
+        {!! Form::select('chapter_id', $mangas, null,[ 'class' => 'form-control']) !!}
 
     </div>
 
     <div class="form-group">
-        {!! Form::label('chap_name', 'Chapter Name: ') !!}
-        {!! Form::textarea('chap_name', null,
+        {!! Form::label('chap_name', 'Chapter Name : ') !!}
+        {!! Form::text('chap_name', null,
         ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">

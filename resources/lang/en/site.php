@@ -22,4 +22,12 @@ return [
     'humble'=>'humble manga',
     'search'=>'Search',
     'searchm'=>'Search Manga',
+    'manganame'=>'Manga Name',
+    'tag'=>'Status',
+    'detail'=>'Detail',
+    'synoposis'=>'Synoposis',
+
+    'author'=>'Author',
+    'chap'=>'All Chapters',
+    'chapter'=>'Chapter',
 ];

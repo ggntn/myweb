@@ -9,13 +9,14 @@
         {{ csrf_field() }}
         <div class="input-group">
             <input type="text" class="form-control" name="q"
-                   placeholder="Search Manga"> <span class="input-group-btn">
+                   placeholder="  {{ trans('site.searchm')}}"> <span class="input-group-btn">
             <button type="submit" class="btn btn-default border-radius: 50%">
                   {{ trans('site.search')}}
             </button>
         </span>
         </div>
     </form>
+
     @if(isset($details))
         <h1>search <b>{{$query}}</b> are :</h1>
         <tbody>
@@ -62,12 +63,12 @@
             </a>
         </div>
         <div class="col-md-5">
-            <h2>Synoposis</h2>
+            <h2>{{ trans('site.synoposis')}}</h2>
              <small></small>{{$mangas->detail}}
 
             <hr>
 
-            <h2>Category</h2>
+            <h2>{{ trans('site.categories')}}</h2>
             @foreach($categories as $cate)
                 @if(($cate->category_id) == ($mangas->category_id))
                     <h3> <span class="badge badge-danger">{{$cate->category_name}}</span></h3>
@@ -76,7 +77,7 @@
             <hr>
             @unless($mangas->tags->isEmpty())
                 <div>
-                    <h2>Tags</h2>
+                    <h2>{{ trans('site.tag')}}</h2>
                     <h3>
                     @foreach($mangas->tags as $tag)
                         <span class="badge badge-info"> {{ $tag->name }} </span>
@@ -88,7 +89,7 @@
                 @endunless
             @foreach($authors as $author)
                 @if(($author->author_id) == ($mangas->author_id))
-                    <h2>Authors</h2>
+                    <h2>{{ trans('site.author')}}</h2>
                     <small></small>{{$author->author_name}}
                 @endif
             @endforeach
@@ -96,7 +97,7 @@
 
     </div>
     <hr>
-    <h2>All Chapters</h2>
+    <h2>{{ trans('site.chap')}}</h2>
     <div class="row">
 
         @foreach($chapters as $chapter)
