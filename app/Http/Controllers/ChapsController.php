@@ -52,7 +52,7 @@ class ChapsController extends Controller
                         $data[]=$filename;
 
                         }
-//                        dd($data);
+                        dd($data);
         }else{
             $fileNametoStore = 'noimage.jpg';
         }
