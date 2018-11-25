@@ -27,8 +27,8 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
 Route::get('/create', 'MangasController@create');
-Route::get('/create_chap', 'ChapsController@create');
-
+//Route::get('/create_chap', 'ChapsController@create');
+//
 
 
 
